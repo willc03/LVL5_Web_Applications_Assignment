@@ -14,7 +14,17 @@ class Pages extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException($page);
         }
 
-        $data['title'] = ucfirst($page); // Capitalize the first letter
+        /*
+            The navigation pages must be specified here, as they will need to
+            appear  on every page of  the website. The array will be fed into
+            the page when it is being generated to generate the buttons dyna-
+            mically.
+        */
+        $data['nav_pages'] = array(
+            array('url' => site_url('/home'), 'btn_title' => "Home"),
+            array('url' => site_url('/about'), 'btn_title' => "About"),
+            array('url' => site_url('/book'), 'btn_title' => "Bookings"),
+        );
 
         return view('templates/header', $data)
             . view('pages/' . $page)
