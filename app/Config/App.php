@@ -24,7 +24,8 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'http://localhost/ci4/';
+    public $baseURL = 'http://fgc.co.uk/'; // Note from Will: this website is set up on a virtual host
+                                           // as recommended in the CodeIgniter documentation.
 
     /**
      * --------------------------------------------------------------------------
@@ -37,7 +38,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $indexPage = 'index.php';
+    public $indexPage = ''; // Note from Will: This is set blank to prevent errors when using site_url();
 
     /**
      * --------------------------------------------------------------------------
