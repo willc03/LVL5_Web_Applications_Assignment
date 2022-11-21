@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>CodeIgniter</title>
+        <title>Furness Golf Club - <?php echo $title; ?></title>
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
