@@ -26,6 +26,12 @@ class Pages extends BaseController
             array('url' => site_url('/book'), 'btn_title' => "Bookings"),
         );
 
+        /*
+            The title of the page will be passed in to the page to be used in
+            the title bar of the browser.
+        */
+        $data['title'] = ucfirst($page);
+
         return view('templates/header', $data)
             . view('pages/' . $page)
             . view('templates/footer');
