@@ -32,6 +32,12 @@ class Pages extends BaseController
         */
         $data['title'] = ucfirst($page);
 
+        /*
+            As CodeIgniter provides different functionality to  add different
+            views dynamically  in the same page.  At the time of writing, the
+            views added to the page will be a global header, followed by  the
+            page content, and then a global footer. 
+        */
         return view('templates/header', $data)
             . view('pages/' . $page)
             . view('templates/footer');
