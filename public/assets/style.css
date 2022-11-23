@@ -1,0 +1,68 @@
+/*
+
+The style.css sheet will contain the styling for the entire website. This is as
+it is generally considered good practice to keep CSS in one file, for a multit-
+ude of reasons, such as faster load times to due caching, easy maintenance, etc
+
+The first section  of the style sheet will be used  to create global variables,
+to ensure consistency across different pages of the website. These variables w-
+ill be referenced further in the file, such that a change to one variable will
+cause a change across the entire website.
+
+*/
+:root { /* Global variables in the root of the site is considered best practice. */
+    --primary-green: rgb(33, 95, 44);
+    --primary-white: rgb(255, 255, 255);
+}
+
+* { /* Some behaviour enforced by default by the browser must be overridden. */
+    margin: 0%;
+    font-family: sans-serif;
+}
+
+/*
+
+The next sections to be styled will be any templates, such as the header and f-
+ooter. These will be given a unique ID so the styling doesn't clash and to make
+editing the style in the future an easier process.
+
+*/
+#header {
+    background-color: var(--primary-green);
+    padding: 35px; /* Static units are used as the height of the header will never change */
+    box-shadow: 0px 1px 25px var(--primary-green);
+}
+#nav.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+#nav.title {
+    color: var(--primary-white);
+    text-decoration: none;
+    font-weight: bolder;
+}
+#nav.buttons {
+    width: 20%;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#nav.button {
+    color: var(--primary-white);
+    text-decoration: none;
+}
+
+/*
+
+This section will be used to  configure the global features  for the main page.
+The margins will be set  such that they don't touch the  sides of the web page,
+as this makes the page look too wide.
+
+*/
+#main {
+    margin: 25px 10%;
+    background-color: red;
+}
