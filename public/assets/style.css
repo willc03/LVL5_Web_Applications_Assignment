@@ -27,6 +27,7 @@ ooter. These will be given a unique ID so the styling doesn't clash and to make
 editing the style in the future an easier process.
 
 */
+/* Header and navigation: */
 #header {
     background-color: var(--primary-green);
     padding: 35px; /* Static units are used as the height of the header will never change */
@@ -53,6 +54,12 @@ editing the style in the future an easier process.
 #nav.button {
     color: var(--primary-white);
     text-decoration: none;
+}
+/* Footer: */
+#footer {
+    background-color: var(--primary-green);
+    padding: 35px;
+    box-shadow: 0px 1px 25px var(--primary-green);
 }
 
 /*
