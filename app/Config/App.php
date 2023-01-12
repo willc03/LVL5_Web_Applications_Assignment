@@ -24,8 +24,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'http://fgc.co.uk/'; // Note from Will: this website is set up on a virtual host
-                                           // as recommended in the CodeIgniter documentation.
+    public $baseURL = 'http://localhost:8080/'; // If going into production, set this to the main URL of the website.
 
     /**
      * --------------------------------------------------------------------------
