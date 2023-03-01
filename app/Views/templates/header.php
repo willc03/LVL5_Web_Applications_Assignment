@@ -8,17 +8,18 @@
         <link rel="stylesheet" type="text/css" href="assets/style.css"> <!-- Custom-written CSS will be used, as it is easier to customise -->
     </head>
     <body>
-        <div id="header">
-            <nav id="nav" class="container">
-                <a id="nav" class="title" href="/">Furness Golf Club</a>
-                <ul id="nav" class="buttons">
-                    <?php foreach ($nav_pages as $nav_button) { ?>
-                        <li>
-                            <a id="nav" class="button" href="<?php echo $nav_button["url"]; ?>"><?php echo $nav_button["btn_title"]; ?></a>
-                        </li>
-                    <?php } ?>
-                </ul>
-            </nav>
-        </div>
-        <div id="main">
+        <div id="footerWrap">
+            <div id="header">
+                <nav id="nav" class="container">
+                    <a id="nav" class="title" href="/">Furness Golf Club</a>
+                    <ul id="nav" class="buttons">
+                        <?php foreach ($nav_pages as $nav_button) { ?>
+                            <li>
+                                <a id="nav" class="button" href="<?php echo $nav_button["url"]; ?>"><?php echo $nav_button["btn_title"]; ?></a>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                </nav>
+            </div>
+            <div id="main">
         
