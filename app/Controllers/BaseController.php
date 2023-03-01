@@ -38,7 +38,11 @@ abstract class BaseController extends Controller
     protected $helpers = [];
 
     /*
-    Create a function to return all the pages to be placed on the navigation bar
+    Create a function to return all the pages to be placed on the navigation bar.
+
+    This will allow the return of pages dynamically  based on a range of factors.
+    At present, the idea is to return different buttons based on both login stat-
+    us and user privilege level.
     */
     protected function getNavigationBarPages()
     {
