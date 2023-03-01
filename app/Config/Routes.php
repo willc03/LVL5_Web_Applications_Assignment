@@ -42,6 +42,7 @@ $routes->get('/login', 'Login::view/login');
 $routes->post('/login/request', 'Login::userLoginRequest');
 $routes->get('/login/logout', 'Login::logout');
 $routes->get('/signup', 'Login::view/signup');
+$routes->post('/signup/request', 'Login::userSignUpRequest');
 
 /*
  * --------------------------------------------------------------------
