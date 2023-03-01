@@ -14,6 +14,7 @@ cause a change across the entire website.
     --footer-height: 180px;
     --primary-green: rgb(33, 95, 44);
     --primary-white: rgb(255, 255, 255);
+    --form-deselected: rgb(95, 95, 95);
 }
 
 * { /* Some behaviour enforced by default by the browser must be overridden. */
@@ -102,4 +103,66 @@ as this makes the page look too wide.
     width: auto;
     margin: 25px 10%;
     padding-bottom: var(--footer-height);
+}
+
+
+/*
+
+The next section will be used to style the forms on the login/signup pages
+
+*/
+
+#login_form {
+    width: 75%;
+}
+#login_form label::after, #login_form label::before {
+    content: "\a";
+    white-space: pre;
+}
+#login_form > * {
+    width: 50%;
+}
+#login_form input {
+    border-color: var(--form-deselected);
+    border-style: solid;
+    border-width: 1.5px;
+    border-radius: 5px;
+    transition-duration: 0.5s;
+    height: 30px;
+    padding-left: 10px;
+}
+#login_form input:hover {
+    transition-duration: 0.5s;
+    border-color: var(--primary-green);
+    box-shadow: 0px 1px 5px var(--primary-green);
+}
+#login_form input[name="submit"] {
+    width: 10%;
+    border: 2px solid var(--primary-green);
+    color: var(--primary-green);
+    background-color: var(--primary-white);
+    border-radius: 5px;
+    transition-duration: 0.5s;
+}
+#login_form input[name="submit"]:hover {
+    transition-duration: 0.5s;
+    background-color: var(--primary-green);
+    color: var(--primary-white)
+}
+
+#sign_up_button {
+    padding: 5px 15px;
+    border: 2px solid var(--primary-green);
+    color: var(--primary-green);
+    background-color: var(--primary-white);
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: small;
+    transition-duration: 0.5s;
+    margin: auto;
+}
+#sign_up_button:hover {
+    transition-duration: 0.5s;
+    background-color: var(--primary-green);
+    color: var(--primary-white)
 }
