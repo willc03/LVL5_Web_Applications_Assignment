@@ -38,6 +38,11 @@ class Login extends BaseController
     }
 
     // POST Request Handling
+    public function userSignUpRequest()
+    {
+        return redirect()->to(site_url('/login'));
+    }
+
     public function userLoginRequest()
     {
         // Code to authenticate users will go here before the redirection.
