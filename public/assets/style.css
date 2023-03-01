@@ -21,6 +21,13 @@ cause a change across the entire website.
     font-family: sans-serif;
 }
 
+.flex_container { /* Some flexbox behaviour will need to be replicated across the site. */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+}
+
 /* 
 
 Make the required changes to the CSS to create a sticker footer, the most comm-

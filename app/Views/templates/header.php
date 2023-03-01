@@ -21,5 +21,5 @@
                     </ul>
                 </nav>
             </div>
-            <div id="main">
+            <div id="main" class="flex_container">
         
