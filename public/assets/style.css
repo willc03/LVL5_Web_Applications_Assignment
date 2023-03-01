@@ -11,7 +11,7 @@ cause a change across the entire website.
 
 */
 :root { /* Global variables in the root of the site is considered best practice. */
-    --footer-height: 180px;
+    --footer-height: 200px;
     --primary-green: rgb(33, 95, 44);
     --primary-white: rgb(255, 255, 255);
     --form-deselected: rgb(95, 95, 95);
@@ -89,6 +89,17 @@ editing the style in the future an easier process.
 /* Footer: */
 #footer {
     background-color: var(--primary-green);
+    display: flex;
+    flex: 0 1 auto;
+    align-items: center;
+    align-self: center;
+    justify-content: space-around;
+}
+#footer p, #footer a, #footer h2 {
+    color: var(--primary-white);
+}
+iframe {
+    border: 2px solid var(--primary-white);
 }
 
 
