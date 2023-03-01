@@ -37,6 +37,29 @@ abstract class BaseController extends Controller
      */
     protected $helpers = [];
 
+    /*
+    Create a function to return all the pages to be placed on the navigation bar
+    */
+    protected function getNavigationBarPages()
+    {
+        if ( $this->session->get('isLoggedIn') )
+        {
+            return array(
+                array('url' => site_url('/home'), 'btn_title' => "Home"),
+                array('url' => site_url('/about'), 'btn_title' => "About"),
+                array('url' => site_url('/login/logout'), 'btn_title' => "Logout")
+            );
+        }
+        else
+        {
+            return array(
+                array('url' => site_url('/home'), 'btn_title' => "Home"),
+                array('url' => site_url('/about'), 'btn_title' => "About"),
+                array('url' => site_url('/login'), 'btn_title' => "Login")
+            );
+        }
+    }
+
     /**
      * Constructor.
      */
@@ -47,6 +70,6 @@ abstract class BaseController extends Controller
 
         // Preload any models, libraries, etc, here.
 
-        // E.g.: $this->session = \Config\Services::session();
+        $this->session = \Config\Services::session();
     }
 }
