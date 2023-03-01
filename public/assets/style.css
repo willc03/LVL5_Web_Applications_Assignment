@@ -126,21 +126,21 @@ The next section will be used to style the forms on the login/signup pages
 
 */
 
-#login_benefits {
+#login_benefits, #signup_benefits {
     width: 70%;
 }
 
-#login_form {
+#login_form, #signup_form {
     width: 75%;
 }
-#login_form label::after, #login_form label::before {
+#login_form label::after, #login_form label::before, #signup_form label::after, #signup_form label::before {
     content: "\a";
     white-space: pre;
 }
-#login_form > * {
+#login_form > *, #signup_form > * {
     width: 50%;
 }
-#login_form input {
+#login_form input, #signup_form input {
     border-color: var(--form-deselected);
     border-style: solid;
     border-width: 1.5px;
@@ -149,12 +149,12 @@ The next section will be used to style the forms on the login/signup pages
     height: 30px;
     padding-left: 10px;
 }
-#login_form input:hover {
+#login_form input:hover, #signup_form input:hover {
     transition-duration: 0.5s;
     border-color: var(--primary-green);
     box-shadow: 0px 1px 5px var(--primary-green);
 }
-#login_form input[name="submit"] {
+#login_form input[name="submit"], #signup_form input[name="submit"] {
     width: 10%;
     border: 2px solid var(--primary-green);
     color: var(--primary-green);
@@ -162,13 +162,13 @@ The next section will be used to style the forms on the login/signup pages
     border-radius: 5px;
     transition-duration: 0.5s;
 }
-#login_form input[name="submit"]:hover {
+#login_form input[name="submit"]:hover, #signup_form input[name="submit"]:hover {
     transition-duration: 0.5s;
     background-color: var(--primary-green);
     color: var(--primary-white)
 }
 
-#sign_up_button {
+#sign_up_button, #login_button {
     padding: 5px 15px;
     border: 2px solid var(--primary-green);
     color: var(--primary-green);
@@ -179,7 +179,7 @@ The next section will be used to style the forms on the login/signup pages
     transition-duration: 0.5s;
     margin: auto;
 }
-#sign_up_button:hover {
+#sign_up_button:hover, #login_button:hover {
     transition-duration: 0.5s;
     background-color: var(--primary-green);
     color: var(--primary-white)
