@@ -16,21 +16,10 @@ class Pages extends BaseController
 {
     public function view($page = 'home')
     {
-        if (! is_file(APPPATH . 'Views/pages/' . $page . '.php')) {
+        if (! is_file(APPPATH . 'Views/pages/static/' . $page . '.php')) {
             // Whoops, we don't have a page for that!
             throw new \CodeIgniter\Exceptions\PageNotFoundException($page);
         }
-
-        /*
-            The navigation pages must be specified here, as they will need to
-            appear  on every page of  the website. The array will be fed into
-            the page when it is being generated to generate the buttons dyna-
-            mically.
-        */
-        $data['nav_pages'] = array(
-            array('url' => site_url('/home'), 'btn_title' => "Home"),
-            array('url' => site_url('/about'), 'btn_title' => "About"),
-        );
 
         /*
             The title of the page will be passed in to the page to be used in
@@ -44,8 +33,9 @@ class Pages extends BaseController
             views added to the page will be a global header, followed by  the
             page content, and then a global footer. 
         */
+        $data['nav_pages'] = $this->getNavigationBarPages();
         return view('templates/header', $data)
-            . view('pages/' . $page)
+            . view('pages/static/' . $page)
             . view('templates/footer');
     }
 }
