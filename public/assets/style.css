@@ -99,6 +99,7 @@ as this makes the page look too wide.
 
 */
 #main {
+    width: auto;
     margin: 25px 10%;
     padding-bottom: var(--footer-height);
 }
