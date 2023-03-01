@@ -94,9 +94,9 @@ editing the style in the future an easier process.
 
 /*
 
-This section will be used to  configure the global features  for the main page.
-The margins will be set  such that they don't touch the  sides of the web page,
-as this makes the page look too wide.
+This section will be used to  configure the global features  for the page. The
+margins will be set  such that they don't touch the  sides of the web page, as
+this makes the page look too wide (unless on a mobile device).
 
 */
 #main {
@@ -105,12 +105,19 @@ as this makes the page look too wide.
     padding-bottom: var(--footer-height);
 }
 
+a:not(:visited) { /* Set links to green. */
+    color: var(--primary-green);
+}
 
 /*
 
 The next section will be used to style the forms on the login/signup pages
 
 */
+
+#login_benefits {
+    width: 70%;
+}
 
 #login_form {
     width: 75%;
