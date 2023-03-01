@@ -10,6 +10,8 @@ namespace App\Controllers;
 
 class Login extends BaseController
 {
+
+    // GET Request Handling
     public function view($page = 'login')
     {
         if (! is_file(APPPATH . 'Views/pages/dynamic/loginPages/' . $page . '.php')) {
@@ -35,9 +37,17 @@ class Login extends BaseController
             . view('templates/footer');
     }
 
+    // POST Request Handling
+    public function userLoginRequest()
+    {
+        // Code to authenticate users will go here before the redirection.
+        return redirect()->to(site_url('/'));
+    }
+
     public function logout()
     {
-        $this->session->destroy();
+        $this->session->destroy(); // Remove all session data. The user is n-
+                                   // ow logged out.
         return redirect()->to(site_url('/'));
     }
 }
