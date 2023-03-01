@@ -1,3 +1,16 @@
+<div id="login_benefits">
+    <h2>Log in to Furness Golf Club portal</h2>
+    <p>Logging in has an array of benefits, including:</p>
+    <ul>
+        <li>Book a tee time for golf.</li>
+        <li>See who else is booked on today.</li>
+        <li>Order drinks from the bar remotely.</li>
+    </ul>
+    <br>
+    <p><a href="<?php echo site_url('/signup'); ?>">Sign up</a> to get all the benefits of a visitor or member.</p>
+</div>
+<br>
+
 <?php
     helper('form'); // This helper will allow CodeIgniter to help with the form-building process
 
