@@ -13,7 +13,7 @@ Create tables to hold data
 
 CREATE TABLE Users (
     UserId int NOT NULL AUTO_INCREMENT,
-    Username varchar(25) NOT NULL,
+    Email varchar(50) NOT NULL,
     Firstname varchar(20) NOT NULL,
     Lastname varchar(20) NOT NULL,
     DateOfBirth date NOT NULL, -- The date of birth will be checked on the web page to make sure users are above a certain age when making an account
