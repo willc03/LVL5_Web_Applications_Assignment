@@ -2,3 +2,4 @@ public/phpMyAdmin/tmp
 .DS_Store
 *.log
 writable
+.idea/
