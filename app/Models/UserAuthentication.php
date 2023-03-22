@@ -5,6 +5,16 @@ use CodeIgniter\Model;
 
 class UserAuthentication extends Model
 {
+    /**
+     * This method will be used to check if a user exists. The email parameter is used to check the email
+     * against the rest of the database.
+     *
+     * The result of this method is a Boolean. True will be returned if the result is 1, as this indicates
+     * that the user exists, false will be returned if this is not the case.
+     *
+     * @param $email
+     * @return bool
+     */
     private function ResolveUserFromEmail($email): bool
     {
         $db = db_connect(); // Connect to the database using the default privileges.
@@ -16,6 +26,14 @@ class UserAuthentication extends Model
         return count($results->getResultArray()) == 1; // Return true if the result is 1, indicating the user exists.
     }
 
+    /**
+     * This function will take in the email and password submitted in the form
+     * and check the existing hashed password against the values submitted.
+     *
+     * @param $email
+     * @param $password
+     * @return bool
+     */
     private function CheckPasswordAgainstHash($email, $password): bool
     {
         $db = db_connect();
@@ -30,6 +48,17 @@ class UserAuthentication extends Model
         return password_verify($password, $hashedPassword); // Returns a boolean of true if the password matches the hash
     }
 
+    /**
+     * This publicly accessible function is a gateway between the private functions
+     * and other classes.
+     *
+     * The function will check if the user exists, and if it does, will verify the
+     * password is correct. The result of this will be returned to the user.
+     *
+     * @param $email
+     * @param $password
+     * @return string
+     */
     public function AuthenticateUser($email, $password): string
     {
 
