@@ -46,6 +46,17 @@ class Login extends BaseController
     {
         // Code to authenticate users will go here before the redirection.
         $UserAuthModel = model('UserAuthentication');
+        // Check if the user exists
+        $DoesUserExist = $UserAuthModel->AuthenticateUser($_POST['email'], $_POST['password']);
+        echo $DoesUserExist;
+        if ( $DoesUserExist == "Success" )
+        {
+            return redirect()->to(site_url('/home'));
+        }
+        else
+        {
+            return redirect()->to(site_url('/about'));
+        }
     }
 
     public function logout()
