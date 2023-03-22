@@ -42,15 +42,10 @@ class Login extends BaseController
     {
         return redirect()->to(site_url('/login'));
     }
-
     public function userLoginRequest()
     {
         // Code to authenticate users will go here before the redirection.
         $UserAuthModel = model('UserAuthentication');
-        $UserByEmail = $UserAuthModel->checkUserPassword($_POST['email'], $_POST['password']);
-
-        // Redirect the user to the home page, this will likely change to the member portal when created
-        return redirect()->to(site_url('/' + $UserByEmail));
     }
 
     public function logout()
