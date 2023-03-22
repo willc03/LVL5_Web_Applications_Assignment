@@ -90,6 +90,7 @@ class Login extends BaseController
         $UserAuthentication = $UserAuthModel->AuthenticateUser($_POST['email'], $_POST['password']);
         if ( $UserAuthentication == "Success" )
         {
+            $this->session->set("isLoggedIn", true);
             return redirect()->to(site_url('/home'));
         }
         else
