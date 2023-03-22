@@ -17,9 +17,19 @@ class UserAuthentication extends Model
         return count($results->getResultArray()) == 1; // Return true if the result is 1, indicating the user exists.
     }
 
+    private function CheckPasswordAgainstHash($email, $password): bool
     {
+        $db = db_connect();
+
+        $builder = $db->table('Users');
+        $results = $builder->getWhere(['Email'=>$email]);
+        $resultArray = $results->getResultArray();
+
+        $hashedPassword = $resultArray[0]["Password"]; // The hashed password will be used in the verification function
 
         $db->close();
+        return password_verify($password, $hashedPassword); // Returns a boolean of true if the password matches the hash
+    }
 
     }
 
