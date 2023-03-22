@@ -82,4 +82,28 @@ class UserAuthentication extends Model
 
     }
 
+    /**
+     * This public function will be used to add new data to the database.
+     * The user data will be passed in from the data from the form
+     *
+     * @param $data
+     * @return void
+     */
+    public function AddNewUser($data): bool
+    {
+        $db = db_connect();
+        $builder = $db->table("Users");
+
+        return $builder->insert([
+            'UserId' => new RawSql("DEFAULT"),
+            'Email' => $data['email'],
+            'Password' => password_hash($data['password'], PASSWORD_BCRYPT),
+            'Firstname' => $data['firstname'],
+            'Lastname' => $data['lastname'],
+            'Address' => $data['address'],
+            'DateOfBirth' => $data['dob'],
+            'PrivilegeLevel' => 1, // All privilege levels are 1 by default, a staff member will be able to change this on a case-by-base basis
+        ]);
+    }
+
 }
