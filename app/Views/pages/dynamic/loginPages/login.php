@@ -7,14 +7,14 @@
         <li>Order drinks from the bar remotely.</li>
     </ul>
     <br>
-    <p><a href="<?php echo site_url('/signup'); ?>">Sign up</a> to get all the benefits of a visitor or member.</p>
+    <p><a href="<?php echo site_url('/account/create'); ?>">Sign up</a> to get all the benefits of a visitor or member.</p>
 </div>
 <br>
 
 <?php
     helper('form'); // This helper will allow CodeIgniter to help with the form-building process
 
-    echo form_open(site_url('/login/request'), ['id' => "login_form", 'class' => "flex_container"]); // Open a POST form that redirects to /login/request for processing
+    echo form_open(site_url('/account/login/request'), ['id' => "login_form", 'class' => "flex_container"]); // Open a POST form that redirects to /login/request for processing
     // Email:
     echo form_label('Email:', 'email');
     echo form_input('email', '', '', 'email');
@@ -29,5 +29,6 @@
 <br>
 <div id="sign_up_container" class="flex_container">
     <p>Don't have an account?</p>
-    <a id="sign_up_button" href="<?php echo site_url('/signup')?>">Sign Up</a>
+    <br>
+    <a id="sign_up_button" href="<?php echo site_url('/account/create')?>">Sign Up</a>
 </div>

@@ -51,7 +51,7 @@ abstract class BaseController extends Controller
             return array(
                 array('url' => site_url('/home'), 'btn_title' => "Home"),
                 array('url' => site_url('/about'), 'btn_title' => "About"),
-                array('url' => site_url('/login/logout'), 'btn_title' => "Logout")
+                array('url' => site_url('/account/logout'), 'btn_title' => "Logout")
             );
         }
         else
@@ -59,7 +59,7 @@ abstract class BaseController extends Controller
             return array(
                 array('url' => site_url('/home'), 'btn_title' => "Home"),
                 array('url' => site_url('/about'), 'btn_title' => "About"),
-                array('url' => site_url('/login'), 'btn_title' => "Login")
+                array('url' => site_url('/account/login'), 'btn_title' => "Login")
             );
         }
     }

@@ -47,15 +47,21 @@ class Login extends BaseController
         // Code to authenticate users will go here before the redirection.
         $UserAuthModel = model('UserAuthentication');
         // Check if the user exists
-        $DoesUserExist = $UserAuthModel->AuthenticateUser($_POST['email'], $_POST['password']);
-        echo $DoesUserExist;
-        if ( $DoesUserExist == "Success" )
+        $UserAuthentication = $UserAuthModel->AuthenticateUser($_POST['email'], $_POST['password']);
+        if ( $UserAuthentication == "Success" )
         {
             return redirect()->to(site_url('/home'));
         }
         else
         {
-            return redirect()->to(site_url('/about'));
+            if ($UserAuthentication == "IncorrectPwd")
+            {
+                return redirect()->to(site_url('/account/login?error=incorrect_password'));
+            }
+            elseif ($UserAuthentication == "NoUser")
+            {
+                return redirect()->to(site_url('/account/login?error=unknown_user'));
+            }
         }
     }
 
