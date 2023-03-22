@@ -5,7 +5,6 @@ use CodeIgniter\Model;
 
 class UserAuthentication extends Model
 {
-    protected $table = 'User';
     private function ResolveUserFromEmail($email): bool
     {
         $db = db_connect(); // Connect to the database using the default privileges.
