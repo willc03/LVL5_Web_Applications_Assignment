@@ -30,6 +30,27 @@ class UserAuthentication extends Model
         return password_verify($password, $hashedPassword); // Returns a boolean of true if the password matches the hash
     }
 
+    public function AuthenticateUser($email, $password): string
+    {
+
+        $DoesUserExist = $this->ResolveUserFromEmail($email);
+        if (!$DoesUserExist)
+        {
+            return "There is no user with the provided email address."; // The user doesn't exist, so an error message is returned.
+        }
+        else
+        {
+            $IsPasswordCorrect = $this->CheckPasswordAgainstHash($email, $password);
+            if ($IsPasswordCorrect)
+            {
+                return "Success";
+            }
+            else
+            {
+                return "IncorrectPwd";
+            }
+        }
+
     }
 
 }
