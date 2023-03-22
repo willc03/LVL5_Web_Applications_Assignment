@@ -2,6 +2,8 @@
 
 namespace App\Models;
 use CodeIgniter\Model;
+use CodeIgniter\Database\RawSql;
+
 
 class UserAuthentication extends Model
 {
@@ -65,7 +67,7 @@ class UserAuthentication extends Model
         $DoesUserExist = $this->ResolveUserFromEmail($email);
         if (!$DoesUserExist)
         {
-            return "There is no user with the provided email address."; // The user doesn't exist, so an error message is returned.
+            return "NoUser"; // The user doesn't exist, so an error message is returned.
         }
         else
         {
