@@ -54,7 +54,33 @@ class Login extends BaseController
     }
     public function userSignUpRequest()
     {
-        return redirect()->to(site_url('/login'));
+        $UserAuthModel = model('UserAuthentication');
+
+        $data = array(
+            'email' => $_POST['email'],
+            'password' => $_POST['password'],
+            'firstname' => $_POST['fname'],
+            'lastname' => $_POST['lname'],
+            'address' => $_POST['ad1'] . ', ' . $_POST['ad2'] . ', ' . $_POST['town'] . ', ' . $_POST['county'] . ', ' . $_POST['pcode'],
+            'dob' => $_POST['dob']
+        );
+        // Check the form can be processed
+        if (!$this->ProcessSignUpRequestItems($_POST))
+        {
+            return redirect()->to(site_url('/account/create?error=form_incomplete'));
+        }
+        else
+        {
+            $userIsAdded = $UserAuthModel->AddNewUser($data);
+            if ($userIsAdded)
+            {
+                return redirect()->to(site_url('/account/login?message=signup_successful'));
+            }
+            else
+            {
+                return redirect()->to(site_url('/account/create?error=database_error'));
+            }
+        }
     }
     public function userLoginRequest()
     {
