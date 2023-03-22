@@ -32,7 +32,7 @@ drop tables.
 
 -- Base users, this is for very basic database interactions only. This user will not be permitted to delete data.
 CREATE USER IF NOT EXISTS 'G20973951_CO2717_user'@'localhost' IDENTIFIED BY 'db_usr_pwd_Pa55word';
-GRANT SELECT, CREATE ON G20973951_CO2717.Users TO 'G20973951_CO2717_user'@'localhost' WITH GRANT OPTION;
+GRANT SELECT, INSERT ON G20973951_CO2717.Users TO 'G20973951_CO2717_user'@'localhost' WITH GRANT OPTION;
 
 -- Junior golfers
 CREATE USER IF NOT EXISTS 'G20973951_CO2717_junior_member'@'localhost' IDENTIFIED BY 'db_usr_pwd_Pa55word';
