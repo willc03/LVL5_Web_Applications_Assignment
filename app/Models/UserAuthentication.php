@@ -5,76 +5,26 @@ use CodeIgniter\Model;
 
 class UserAuthentication extends Model
 {
-    protected $db;
-    //Setup
-    protected $table      = 'Users';
-    protected $primaryKey = 'UserId';
-
-    protected $useAutoIncrement = true;
-
-    protected $returnType     = 'array';
-    protected $useSoftDeletes = true;
-
-    protected $allowedFields = [];
-
-    // Dates
-    protected $useTimestamps = false;
-    protected $dateFormat    = 'datetime';
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
-
-    // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
-    protected $skipValidation       = false;
-    protected $cleanValidationRules = true;
-
-    // Callbacks
-    protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
-    protected $afterInsert    = [];
-    protected $beforeUpdate   = [];
-    protected $afterUpdate    = [];
-    protected $beforeFind     = [];
-    protected $afterFind      = [];
-    protected $beforeDelete   = [];
-    protected $afterDelete    = [];
-
-    public function __construct()
+    protected $table = 'User';
+    public function ResolveUserFromEmail($email)
     {
-        $this->db = db_connect();
-    }
+        $db = db_connect(); // Connect to the database using the default privileges.
 
-    public function resolveUserFromEmail($email)
-    {
-        $query = $this->db->query("SELECT * FROM Users WHERE Email = '$email';");
-        $result = $query->getResultArray();
-        return $result;
+        $builder = $db->table('Users'); // Set the table to 'Users'
+        $builder->getWhere(['Email'=>$_POST['email']]); // Set the query to only return results where the email is matched.
+
+        $db->close(); // Close the active database connection
+        return $builder->countAllResults(false) == 1; // Return true if the result is 1, indicating the user exists.
     }
 
     public function checkUserPassword($email, $password)
     {
-        $db = \Config\Database::connect('default');
-        $query = $db->query("SELECT Email, Password FROM Users WHERE Email = \'$email\'");
-        $result = $query->getResultArray();
-        if ( count($result) == 1 )
-        {
-            if ( password_verify($password, $result[0][1]) )
-            {
-                return 2;
-            }
-            else
-            {
-                return 1;
-            }
-        } 
-        else 
-        {
-            return 0;
-        }
+        $db = \Config\Database::connect();
+        $query = $db->query('SELECT Email, Password FROM Users WHERE Email = ' . $email . ';');
 
         $db->close();
+        return $query->getResultArray();
+
     }
 
 }
