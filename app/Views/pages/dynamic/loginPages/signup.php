@@ -1,3 +1,10 @@
+<?php if (isset($_GET["error"]) && $_GET["error"] == "form_incomplete") {?>
+    <div class="message_box error">
+        <h2>Error: Form Incomplete</h2>
+        <p>Please fill in all fields on the form to sign up.</p>
+    </div>
+<?php } ?>
+
 <div id="signup_benefits">
     <h2>Log in to Furness Golf Club portal</h2>
     <p>Logging in has an array of benefits, including:</p>
@@ -53,5 +60,6 @@
 <br>
 <div id="log_in_container" class="flex_container">
     <p>Already have an account?</p>
+    <br>
     <a id="login_button" href="<?php echo site_url('/login')?>">Log in</a>
 </div>

@@ -1,3 +1,15 @@
+<?php if (isset($_GET["error"]) && $_GET["error"] == "unknown_user") {?>
+    <div class="message_box error">
+        <h2>Error: User does not exist</h2>
+        <p>The user with the entered email does not exist. <a href="<?php echo site_url("/account/create"); ?>">Create an account</a></p>
+    </div>
+<?php } else if (isset($_GET["error"]) && $_GET["error"] == "incorrect_password") {?>
+    <div class="message_box error">
+        <h2>Error: Incorrect Password</h2>
+        <p>Please try again.</p>
+    </div>
+<?php } ?>
+
 <div id="login_benefits">
     <h2>Log in to Furness Golf Club portal</h2>
     <p>Logging in has an array of benefits, including:</p>
