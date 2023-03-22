@@ -37,7 +37,32 @@ class Login extends BaseController
             . view('templates/footer');
     }
 
-    // POST Request Handling
+    /*
+     * POST Request Handling
+     *
+     * Private functions will be created to complete tasks that aren't accessed
+     * via routing. Public functions will then handle tasks such as signing up
+     * and logging in.
+     */
+
+    /**
+     * This private function is used to process items from the Sign-Up form.
+     * The main purpose of the function is to make sure no fields are empty.
+     *
+     * @param $postItems
+     * @return void
+     */
+    private function ProcessSignUpRequestItems($postItems)
+    {
+        foreach ($postItems as $item)
+        {
+            if (strlen($item) <= 0)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
     public function userSignUpRequest()
     {
         return redirect()->to(site_url('/login'));
