@@ -21,6 +21,9 @@
     // Last name:
     echo form_label('Last name:', 'lname');
     echo form_input('lname');
+    // Date of birth:
+    echo form_label("Date of birth:", 'dob');
+    echo form_input('dob', '', '', 'date');
     // Address line 1:
     echo form_label('Address line 1:', 'ad1');
     echo form_input('ad1');
@@ -48,7 +51,7 @@
     echo form_close();
 ?>
 <br>
-<div id="sign_up_container" class="flex_container">
+<div id="log_in_container" class="flex_container">
     <p>Already have an account?</p>
     <a id="login_button" href="<?php echo site_url('/login')?>">Log in</a>
 </div>
