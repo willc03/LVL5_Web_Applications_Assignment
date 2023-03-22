@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS Users (
     Password varchar(255) NOT NULL, -- The password has an extended maximum length for hashing and security reasons.
     Firstname varchar(20) NOT NULL,
     Lastname varchar(20) NOT NULL,
+    Address varchar(255) NOT NULL,
     DateOfBirth date NOT NULL, -- The date of birth will be checked on the web page to make sure users are above a certain age when making an account
     PrivilegeLevel int NOT NULL DEFAULT 1 CHECK (PrivilegeLevel >= 1 AND PrivilegeLevel <= 6),
     PRIMARY KEY ( UserId )
