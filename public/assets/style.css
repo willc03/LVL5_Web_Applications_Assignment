@@ -14,6 +14,8 @@ cause a change across the entire website.
     --footer-height: 200px;
     --primary-green: rgb(33, 95, 44);
     --primary-white: rgb(255, 255, 255);
+    --primary-red: #be1622;
+    --secondary-red: #ffe2e0;
     --form-deselected: rgb(95, 95, 95);
 }
 
@@ -183,4 +185,22 @@ The next section will be used to style the forms on the login/signup pages
     transition-duration: 0.5s;
     background-color: var(--primary-green);
     color: var(--primary-white)
+}
+
+/*
+Style all message boxes.
+*/
+.message_box {
+    width: 70%;
+    padding: 2.5% 0px;
+    margin-bottom: 20px;
+}
+.message_box, .error {
+    background-color: var(--secondary-red);
+    border-radius: 5px;
+    color: var(--primary-red);
+    text-align: center;
+}
+.message_box, .error a {
+    color: var(--primary-red)!important;
 }
