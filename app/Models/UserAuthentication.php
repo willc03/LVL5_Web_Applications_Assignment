@@ -17,13 +17,9 @@ class UserAuthentication extends Model
         return count($results->getResultArray()) == 1; // Return true if the result is 1, indicating the user exists.
     }
 
-    public function checkUserPassword($email, $password)
     {
-        $db = \Config\Database::connect();
-        $query = $db->query('SELECT Email, Password FROM Users WHERE Email = ' . $email . ';');
 
         $db->close();
-        return $query->getResultArray();
 
     }
 
