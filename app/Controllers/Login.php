@@ -21,9 +21,9 @@ class Login extends BaseController
         // Get the navigation pages.
         $data['nav_pages'] = $this->getNavigationBarPages();
         // Add the page content
-        return view('templates/header', $data)
+        return view('templates/staticTemplates/header', $data)
             . view('pages/dynamic/loginPages/' . $page)
-            . view('templates/footer');
+            . view('templates/staticTemplates/footer');
     }
 
     /*
@@ -91,7 +91,7 @@ class Login extends BaseController
         if ( $UserAuthentication == "Success" )
         {
             $this->session->set("isLoggedIn", true);
-            return redirect()->to(site_url('/home'));
+            return redirect()->to(site_url('/members'));
         }
         else
         {
