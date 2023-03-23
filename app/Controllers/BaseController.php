@@ -51,6 +51,7 @@ abstract class BaseController extends Controller
             return array(
                 array('url' => site_url('/home'), 'btn_title' => "Home"),
                 array('url' => site_url('/about'), 'btn_title' => "About"),
+                array('url' => site_url('/members'), 'btn_title' => "Member Portal"),
                 array('url' => site_url('/account/logout'), 'btn_title' => "Logout")
             );
         }
