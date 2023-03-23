@@ -7,11 +7,11 @@
         <link rel="icon" href="assets/favicon.ico"> <!-- A custom icon will be used for this web application -->
         <link rel="stylesheet" type="text/css" href="/assets/style.css"> <!-- Custom-written CSS will be used, as it is easier to customise -->
     </head>
-    <body>
+    <body class="members">
         <div id="footerWrap">
             <div id="header" class="members">
                 <nav id="nav" class="container">
-                    <a id="nav" class="title" href="/">Furness Golf Club - Members Portal</a>
+                    <a id="nav" class="title" href="/">Furness Golf Club</a>
                     <ul id="nav" class="buttons">
                         <?php foreach ($nav_pages as $nav_button) { ?>
                             <li>
@@ -22,4 +22,3 @@
                 </nav>
             </div>
             <div id="main" class="flex_container">
-        
