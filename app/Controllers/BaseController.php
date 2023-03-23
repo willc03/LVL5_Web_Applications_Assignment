@@ -49,33 +49,39 @@ abstract class BaseController extends Controller
         if ( $this->session->get('isLoggedIn') )
         {
             $privilegeLevel = $this->session->get("privilegeLevel");
-            if ($privilegeLevel == 6)
+            switch ($privilegeLevel)
             {
-                return array(
-                    array('url' => site_url('/home'), 'btn_title' => "Home"),
-                    array('url' => site_url('/about'), 'btn_title' => "About"),
-                    array('url' => site_url('/members'), 'btn_title' => "Member Portal"),
-                    array('url' => site_url('/admin'), 'btn_title' => "Admin Panel"),
-                    array('url' => site_url('/account/logout'), 'btn_title' => "Logout")
-                );
-            }
-            else
-            {
-                return array(
-                    array('url' => site_url('/home'), 'btn_title' => "Home"),
-                    array('url' => site_url('/about'), 'btn_title' => "About"),
-                    array('url' => site_url('/members'), 'btn_title' => "Member Portal"),
-                    array('url' => site_url('/account/logout'), 'btn_title' => "Logout")
-                );
+                default:
+                    return array(
+                        array('url' => site_url('/home'), 'btn_title' => "Home"),
+                        array('url' => site_url('/about'), 'btn_title' => "About"),
+                        array('url' => site_url('/members/golf/booking'), 'btn_title' => "Book Golf"),
+                        array('url' => site_url('/account/logout'), 'btn_title' => "Logout")
+                    );
+                case 1 || 2 || 3 || 4 || 5:
+                    return array(
+                        array('url' => site_url('/home'), 'btn_title' => "Home"),
+                        array('url' => site_url('/about'), 'btn_title' => "About"),
+                        array('url' => site_url('/members/golf/booking'), 'btn_title' => "Book Golf"),
+                        array('url' => site_url('/members/bar'), 'btn_title' => "Bar"),
+                        array('url' => site_url('/members'), 'btn_title' => "Member Portal"),
+                        array('url' => site_url('/account/logout'), 'btn_title' => "Logout")
+                    );
+                case 6:
+                    return array(
+                        array('url' => site_url('/home'), 'btn_title' => "Home"),
+                        array('url' => site_url('/about'), 'btn_title' => "About"),
+                        array('url' => site_url('/members/golf/booking'), 'btn_title' => "Book Golf"),
+                        array('url' => site_url('/members/bar'), 'btn_title' => "Bar"),
+                        array('url' => site_url('/members'), 'btn_title' => "Member Portal"),
+                        array('url' => site_url('/admin'), 'btn_title' => "Admin Panel"),
+                        array('url' => site_url('/account/logout'), 'btn_title' => "Logout")
+                    );
             }
         }
         else
         {
-            return array(
-                array('url' => site_url('/home'), 'btn_title' => "Home"),
-                array('url' => site_url('/about'), 'btn_title' => "About"),
-                array('url' => site_url('/account/login'), 'btn_title' => "Login")
-            );
+            return array(array('url' => site_url('/home'), 'btn_title' => "Home"), array('url' => site_url('/about'), 'btn_title' => "About"), array('url' => site_url('/account/login'), 'btn_title' => "Login"));
         }
     }
 
