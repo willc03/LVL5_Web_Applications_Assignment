@@ -48,12 +48,26 @@ abstract class BaseController extends Controller
     {
         if ( $this->session->get('isLoggedIn') )
         {
-            return array(
-                array('url' => site_url('/home'), 'btn_title' => "Home"),
-                array('url' => site_url('/about'), 'btn_title' => "About"),
-                array('url' => site_url('/members'), 'btn_title' => "Member Portal"),
-                array('url' => site_url('/account/logout'), 'btn_title' => "Logout")
-            );
+            $privilegeLevel = $this->session->get("privilegeLevel");
+            if ($privilegeLevel == 6)
+            {
+                return array(
+                    array('url' => site_url('/home'), 'btn_title' => "Home"),
+                    array('url' => site_url('/about'), 'btn_title' => "About"),
+                    array('url' => site_url('/members'), 'btn_title' => "Member Portal"),
+                    array('url' => site_url('/admin'), 'btn_title' => "Admin Panel"),
+                    array('url' => site_url('/account/logout'), 'btn_title' => "Logout")
+                );
+            }
+            else
+            {
+                return array(
+                    array('url' => site_url('/home'), 'btn_title' => "Home"),
+                    array('url' => site_url('/about'), 'btn_title' => "About"),
+                    array('url' => site_url('/members'), 'btn_title' => "Member Portal"),
+                    array('url' => site_url('/account/logout'), 'btn_title' => "Logout")
+                );
+            }
         }
         else
         {
