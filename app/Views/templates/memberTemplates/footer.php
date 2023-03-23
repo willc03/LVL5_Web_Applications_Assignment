@@ -1,6 +1,6 @@
             </div>
         </div>
-        <div id="footer">
+        <div id="footer" class="members">
             <div id="address">
                 <h2>Furness Golf Club</h2>
                 <p>Central Drive, Walney</p>

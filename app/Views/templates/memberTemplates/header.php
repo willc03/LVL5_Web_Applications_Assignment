@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Furness Golf Club - <?php echo $title; ?></title>
+        <title><?php echo 'Furness Golf Club - ' . esc($title); ?></title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <!-- Enables responsive features -->
         <link rel="icon" href="assets/favicon.ico"> <!-- A custom icon will be used for this web application -->
@@ -9,9 +9,9 @@
     </head>
     <body>
         <div id="footerWrap">
-            <div id="header">
+            <div id="header" class="members">
                 <nav id="nav" class="container">
-                    <a id="nav" class="title" href="/">Furness Golf Club</a>
+                    <a id="nav" class="title" href="/">Furness Golf Club - Members Portal</a>
                     <ul id="nav" class="buttons">
                         <?php foreach ($nav_pages as $nav_button) { ?>
                             <li>
