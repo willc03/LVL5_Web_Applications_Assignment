@@ -55,15 +55,6 @@ class Login extends BaseController
     public function userSignUpRequest()
     {
         $UserAuthModel = model('UserAuthentication');
-
-        $data = array(
-            'email' => $_POST['email'],
-            'password' => $_POST['password'],
-            'firstname' => $_POST['fname'],
-            'lastname' => $_POST['lname'],
-            'address' => $_POST['ad1'] . ', ' . $_POST['ad2'] . ', ' . $_POST['town'] . ', ' . $_POST['county'] . ', ' . $_POST['pcode'],
-            'dob' => $_POST['dob']
-        );
         // Check the form can be processed
         if (!$this->ProcessSignUpRequestItems($_POST))
         {
@@ -71,7 +62,14 @@ class Login extends BaseController
         }
         else
         {
-            $userIsAdded = $UserAuthModel->AddNewUser($data);
+            $userIsAdded = $UserAuthModel->AddNewUser(array(
+                'email' => $_POST['email'],
+                'password' => $_POST['password'],
+                'firstname' => $_POST['fname'],
+                'lastname' => $_POST['lname'],
+                'address' => $_POST['ad1'] . ', ' . $_POST['ad2'] . ', ' . $_POST['town'] . ', ' . $_POST['county'] . ', ' . $_POST['pcode'],
+                'dob' => $_POST['dob']
+            ));
             if ($userIsAdded)
             {
                 return redirect()->to(site_url('/account/login?message=signup_successful'));
@@ -91,6 +89,7 @@ class Login extends BaseController
         if ( $UserAuthentication == "Success" )
         {
             $this->session->set("isLoggedIn", true);
+            $this->session->set("privilegeLevel", $UserAuthModel->GetUserPrivilege($_POST['email']));
             return redirect()->to(site_url('/members'));
         }
         else
