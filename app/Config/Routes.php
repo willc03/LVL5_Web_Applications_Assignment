@@ -47,6 +47,8 @@ $routes->post('/account/login/request', 'Login::userLoginRequest');
 $routes->get('/account/logout', 'Login::logout');
 $routes->get('/account/create', 'Login::view/signup');
 $routes->post('/account/create/request', 'Login::userSignUpRequest');
+// Members portal
+$routes->get('/members', 'Members::index');
 
 /*
  * --------------------------------------------------------------------
