@@ -34,8 +34,8 @@ class Pages extends BaseController
             page content, and then a global footer. 
         */
         $data['nav_pages'] = $this->getNavigationBarPages();
-        return view('templates/header', $data)
+        return view('templates/staticTemplates/header', $data)
             . view('pages/static/' . $page)
-            . view('templates/footer');
+            . view('templates/staticTemplates/footer');
     }
 }
