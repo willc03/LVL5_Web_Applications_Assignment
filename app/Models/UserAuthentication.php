@@ -108,4 +108,22 @@ class UserAuthentication extends Model
         ]);
     }
 
+    public function GetUserPrivilege($email)
+    {
+        $DoesUserExist = $this->ResolveUserFromEmail($email);
+        if ($DoesUserExist)
+        {
+            $db = db_connect();
+            $builder = $db->table("Users");
+
+            $userRecord = $builder->getWhere(["Email" => $email]);
+            $userRecordArray = $userRecord->getResultArray();
+            return $userRecordArray[0]["PrivilegeLevel"];
+        }
+        else
+        {
+            error_log("The email provided doesn't correspond to a user account.");
+        }
+    }
+
 }
