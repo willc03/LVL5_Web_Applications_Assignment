@@ -108,6 +108,13 @@ class UserAuthentication extends Model
         ]);
     }
 
+    /**
+     * This function is used to get the user's privilege level which will
+     * determine what sections of the application they can access.
+     *
+     * @param $email
+     * @return mixed|void
+     */
     public function GetUserPrivilege($email)
     {
         $DoesUserExist = $this->ResolveUserFromEmail($email);
