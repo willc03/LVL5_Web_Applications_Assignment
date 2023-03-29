@@ -44,7 +44,7 @@ abstract class BaseController extends Controller
     At present, the idea is to return different buttons based on both login stat-
     us and user privilege level.
     */
-    protected function getNavigationBarPages()
+    protected function getNavigationBarPages(): array
     {
         if ( $this->session->get('isLoggedIn') )
         {
@@ -88,7 +88,7 @@ abstract class BaseController extends Controller
     /**
      * Constructor.
      */
-    public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
+    public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger): void
     {
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
