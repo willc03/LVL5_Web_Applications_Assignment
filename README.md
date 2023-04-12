@@ -33,7 +33,7 @@ These are, of course, just ideas, and the full explanation of the website and it
 | A user registration system which adds new users to a database table. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓
 | Feature a login system verifying a user against data in a database table. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓
 | Maintain a state using sessions or alternative means. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓
-| Do not permit non logged-in users from accessing areas where C.R.U.D. operations (other than user registration) take place. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Do not permit non logged-in users from accessing areas where C.R.U.D. operations (other than user registration) take place. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓
 | User's passwords MUST NOT be stored in plain text in the database and must be hashed using a secure algorithm (BCRYPT etc.) and NOT merely MD5 or SHA1. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓
 | All endpoints accessible within the application should render well structured, valid HTML documents. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 | No stubs (incomplete pages) or invalid mark-up. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
