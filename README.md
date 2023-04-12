@@ -30,7 +30,7 @@ These are, of course, just ideas, and the full explanation of the website and it
 | Requirement | Pass | 3rd | 2:2 | 2:1 | 1st | High 1st | Completed |
 |      --     |  --  | --  |  -- | --  |  -- |    --    |     --    |
 | Build an application which demonstrates FULL C.R.U.D. functionality built around your chosen scenario. (Create, Read, Update, and Delete) of records from at least ONE database table. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| A user registration system which adds new users to a database table. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| A user registration system which adds new users to a database table. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓
 | Feature a login system verifying a user against data in a database table. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓
 | Maintain a state using sessions or alternative means. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓
 | Do not permit non logged-in users from accessing areas where C.R.U.D. operations (other than user registration) take place. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
