@@ -67,37 +67,38 @@ editing the style in the future an easier process.
 */
 /* Header and navigation: */
 #header {
-    background: var(--header-green);
-    padding: 35px; /* Static units are used as the height of the header will never change */
+    padding: 35px;
     box-shadow: 0px 1px 25px var(--primary-green);
+    display: flex;
+    background: var(--header-green);
 }
 #header.members {
-    background: var(--header-blue);
-    padding: 35px; /* Static units are used as the height of the header will never change */
+    padding: 35px;
     box-shadow: 0px 1px 25px #001540;
+    background: var(--header-blue);
 }
-#nav.container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-}
-#nav.title {
+#header #title {
     color: var(--primary-white);
     text-decoration: none;
     font-weight: bolder;
+    width: 65%;
 }
-#nav.buttons {
-    width: 25%;
+#header #navigation {
+    width: 35%;
+}
+#header #navigation ul {
     list-style-type: none;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    padding: 0;
+    width: 100%;
 }
-#nav.button {
+#header #navigation a {
     color: var(--primary-white);
     text-decoration: none;
 }
+
 /* Footer: */
 #footer {
     background: var(--header-green);
@@ -140,11 +141,9 @@ a:not(:visited) { /* Set links to green. */
 The next section will be used to style the forms on the login/signup pages
 
 */
-
 #login_benefits, #signup_benefits {
     width: 70%;
 }
-
 #login_form, #signup_form {
     width: 75%;
 }
@@ -156,48 +155,42 @@ The next section will be used to style the forms on the login/signup pages
     width: 50%;
 }
 #login_form input, #signup_form input {
-    border-color: var(--form-deselected);
-    border-style: solid;
-    border-width: 1.5px;
+    border: 1.5px solid var(--form-deselected);
     border-radius: 5px;
-    transition-duration: 0.5s;
+    transition: border-color 0.5s, box-shadow 0.5s;
     height: 30px;
     padding-left: 10px;
 }
 #login_form input:hover, #signup_form input:hover {
-    transition-duration: 0.5s;
     border-color: var(--primary-green);
     box-shadow: 0px 1px 5px var(--primary-green);
 }
 #login_form input[name="submit"], #signup_form input[name="submit"] {
     width: 10%;
     border: 2px solid var(--primary-green);
+    border-radius: 5px;
     color: var(--primary-green);
     background-color: var(--primary-white);
-    border-radius: 5px;
-    transition-duration: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
 }
 #login_form input[name="submit"]:hover, #signup_form input[name="submit"]:hover {
-    transition-duration: 0.5s;
     background-color: var(--primary-green);
-    color: var(--primary-white)
+    color: var(--primary-white);
 }
-
 #sign_up_button, #login_button {
     padding: 5px 15px;
     border: 2px solid var(--primary-green);
+    border-radius: 5px;
     color: var(--primary-green);
     background-color: var(--primary-white);
-    border-radius: 5px;
     text-decoration: none;
     font-size: small;
-    transition-duration: 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     margin: auto;
 }
 #sign_up_button:hover, #login_button:hover {
-    transition-duration: 0.5s;
     background-color: var(--primary-green);
-    color: var(--primary-white)
+    color: var(--primary-white);
 }
 
 /*
@@ -217,3 +210,4 @@ Style all message boxes.
 .message_box, .error a {
     color: var(--primary-red)!important;
 }
+
