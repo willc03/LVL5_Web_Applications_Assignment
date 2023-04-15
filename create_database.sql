@@ -40,8 +40,10 @@ CREATE TABLE IF NOT EXISTS GolfTimes ( -- This will set the times that golf can 
     StartDate date NOT NULL,
     EndDate date NOT NULL,
     StartTime time NOT NULL,
-    EndTime time NOT NULL
+    EndTime time NOT NULL,
+    TimeIncrement time NOT NULL CHECK ( TimeIncrement <= '01:00:00' )
 );
+INSERT INTO GolfTimes VALUES (1, '1970-01-01', '1970-01-01', '07:00:00', '07:00:00', '00:15:00');
 CREATE TABLE IF NOT EXISTS GolfBooking ( -- Used to store booking of golf times
     BookingId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     UserId int NOT NULL REFERENCES Users(UserId),
@@ -64,6 +66,7 @@ drop tables.
 -- Base users, this is for very basic database interactions only. This user will not be permitted to delete data.
 CREATE USER IF NOT EXISTS 'G20973951_CO2717_user'@'localhost' IDENTIFIED BY 'db_usr_pwd_Pa55word';
 GRANT SELECT, INSERT ON G20973951_CO2717.Users TO 'G20973951_CO2717_user'@'localhost' WITH GRANT OPTION;
+GRANT SELECT ON G20973951_CO2717.GolfTimes TO 'G20973951_CO2717_user'@'localhost' WITH GRANT OPTION;
 
 -- Junior golfers
 CREATE USER IF NOT EXISTS 'G20973951_CO2717_junior_member'@'localhost' IDENTIFIED BY 'db_usr_pwd_Pa55word';
