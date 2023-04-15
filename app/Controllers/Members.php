@@ -17,7 +17,7 @@ class Members extends BaseController
         $data['nav_pages'] = $this->getNavigationBarPages();
         $data['title'] = 'Members Portal';
         return view('templates/memberTemplates/header', $data)
-            .view('pages/dynamic/memberPages/portalHome')
+            . view('pages/dynamic/memberPages/portalHome')
             . view('templates/memberTemplates/footer');
     }
 }

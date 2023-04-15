@@ -211,3 +211,43 @@ Style all message boxes.
     color: var(--primary-red)!important;
 }
 
+/*
+Style content for logged in users
+ */
+body.members h1 {
+    color: var(--primary-white);
+}
+body.members #teeSheetBox {
+    height: 200px;
+    overflow: auto;
+    overscroll-behavior-y: none;
+    border: 2px solid var(--primary-white);
+    border-collapse: collapse;
+}
+#tee_sheet_overview {
+    width: 50%;
+}
+body.members #tee_sheet_overview h2 {
+    color: var(--primary-white);
+    text-align: center;
+}
+body.members table.teeSheet {
+    border: 1px solid var(--primary-white);
+    border-collapse: collapse;
+    color: var(--primary-white);
+    table-layout: fixed;
+    text-align: center;
+    width: 100%;
+    overscroll-behavior-y: none;
+}
+body.members table.teeSheet th, body.members table.teeSheet td {
+    border: 1px solid var(--primary-white);
+    height: 25px;
+}
+body.members table.teeSheet tr:first-child {
+    position: sticky;
+    top: 0;
+    background-color: var(--primary-white);
+    border: 1px solid rgba(0, 21, 64, 0.95);
+    color: rgba(0, 21, 64, 0.95);
+}
