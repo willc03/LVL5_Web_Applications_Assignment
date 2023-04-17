@@ -44,12 +44,18 @@ $routes->get('/about', 'Pages::view/about');
 $routes->get('/account/login', 'Login::view/login');
 $routes->post('/account/login/request', 'Login::userLoginRequest');
 // Sign-up
-$routes->get('/account/logout', 'Login::logout');
 $routes->get('/account/create', 'Login::view/signup');
 $routes->post('/account/create/request', 'Login::userSignUpRequest');
+// Logouts
+$routes->get('/account/logout', 'Login::logout');
+
+// MEMBERS
 // Members portal
 $routes->get('/members', 'Members::index');
 
+// GOLF
+// Golf
+$routes->get('/golf', 'Golf::index');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
