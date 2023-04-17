@@ -44,7 +44,7 @@ These are, of course, just ideas, and the full explanation of the website and it
 | A backend web framework **may** have been used as opposed to standard PHP, but otherwise good code quality is evident throughout with no deprecated methods or procedural PHP methods. |  |  | ✓ | ✓ | ✓ | ✓ | ✓
 | Multi-level user access has been achieved allowing an admin user to access pages other cannot. |  |  | ✓ | ✓ | ✓ | ✓ | ✓
 | An attempt has been made to secure the application against common threats such as SQL injection or cross-site request forgery. |  |  | ✓ | ✓ | ✓ | ✓ | ✓ 
-| External APIs such as Google maps have been incorporated into the application e.g., to show directions to a location. |  |  | ✓ | ✓ | ✓ | ✓ |
+| External APIs such as Google maps have been incorporated into the application e.g., to show directions to a location. |  |  | ✓ | ✓ | ✓ | ✓ | ✓ 
 | A back-end web framework must have been used as opposed to straight unstructured PHP. |  |  |  | ✓ | ✓ | ✓ | ✓
 | Multi-level user access will be achieved allowing at a minimum for a "normal" and "admin" user type to have different access rights over data within the application from the back-end database. |  |  |  | ✓ | ✓ | ✓ |
 | The application incorporates some AJAX features such as a username availability checker. |  |  |  | ✓ | ✓ | ✓ |
