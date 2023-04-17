@@ -17,18 +17,17 @@
 
             $current_time = $start_time;
 
-            while ($current_time <= $end_time) { ?>
+            $um = model("GolfManagement");
+            $times = $um->GetTimesForDate(date('Y-m-d'));
+            foreach ($times as $time)
+            { ?>
                 <tr>
-                    <td><?php
-                        echo date('h:i A', $current_time) . "\n";
-                        $current_time = strtotime('+10 minutes', $current_time);
-                        ?></td>
+                    <td><?php echo $time; ?></td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
                 </tr>
-
             <?php } ?>
         </table>
     </div>
