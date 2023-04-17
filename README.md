@@ -50,7 +50,7 @@ These are, of course, just ideas, and the full explanation of the website and it
 | The application incorporates some AJAX features such as a username availability checker. |  |  |  | ✓ | ✓ | ✓ |
 | Responsive design allows for the application to transform allowing both desktop and mobile browsing with a modern user iunterface free from usability flaws. |  |  |  |  | ✓ | ✓ |
 | Multiple instances of AJAX techniques have been incorporated, or the application follows an backend API with seperate front-end architecture. |  |  |  |  | ✓ | ✓ |
-| Appropriate back-end privileges have been set up e.g. the application must NOT connect to the MySQL database using the root user with unlimited privilege. |  |  |  |  | ✓ | ✓ |
+| Appropriate back-end privileges have been set up e.g. the application must NOT connect to the MySQL database using the root user with unlimited privilege. |  |  |  |  | ✓ | ✓ | ✓
 | A well considered user hierarchy has been incorporated into the application including the facility for administrators to manage other user accounts. |  |  |  |  |  | ✓ |
 | The application must have no major security flaws. Vulnerabilities ranging beyond just SQL injection have been addressed. |  |  |  |  |  | ✓ |
 | You have undertaken significant independent learning and used tools, and or techniques beyond what was given to you throughout the labs and lectures this year. |  |  |  |  |  | ✓ |
