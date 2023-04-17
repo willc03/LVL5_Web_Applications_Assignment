@@ -27,7 +27,6 @@ class GolfManagement extends Model
             // There were no set times found
             $default_results = $builder->getWhere("TimeId = 1")->getResultArray();
             $default_time_settings = $default_results[0];
-
         }
         else
         {
