@@ -235,7 +235,8 @@ body.members #teeSheetBox {
 #tee_sheet_overview {
     width: 50%;
 }
-body.members #tee_sheet_overview h2 {
+
+body.members #tee_sheet_overview h2, body.members #booking_tee_sheet h2 {
     color: var(--primary-white);
     text-align: center;
 }
