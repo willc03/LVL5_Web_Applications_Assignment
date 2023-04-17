@@ -41,7 +41,7 @@ class Login extends BaseController
      * @param $postItems
      * @return void
      */
-    private function ProcessSignUpRequestItems($postItems)
+    private function ProcessSignUpRequestItems($postItems) // Back-end form validation
     {
         foreach ($postItems as $item)
         {
@@ -88,8 +88,8 @@ class Login extends BaseController
         $UserAuthentication = $UserAuthModel->AuthenticateUser($_POST['email'], $_POST['password']);
         if ( $UserAuthentication == "Success" )
         {
-            $this->session->set("isLoggedIn", true);
-            $this->session->set("privilegeLevel", $UserAuthModel->GetUserPrivilege($_POST['email']));
+            session()->set("isLoggedIn", true);
+            session()->set("privilegeLevel", $UserAuthModel->GetUserPrivilege($_POST['email']));
             return redirect()->to(site_url('/members'));
         }
         else
@@ -108,7 +108,7 @@ class Login extends BaseController
     public function logout()
     {
         // Destroy the session.
-        $this->session->destroy();
+        session()->destroy();
         // Redirect to the home page.
         return redirect()->to(site_url('/'));
     }
