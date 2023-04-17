@@ -1,15 +1,4 @@
 <?php
-
-/*
-    This controller will  be used for pages  which do not require any
-    database C.R.U.D. operations. Pages such as these will be the ho-
-    me  page,  the about page,  and other pages which may ne added in
-    the future.
-*/
-
-// This script is taken from CodeIgniter for the initial commit.
-// It will most likely be changed in future commits.
-
 namespace App\Controllers;
 
 class Golf extends BaseController
