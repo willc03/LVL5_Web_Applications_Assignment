@@ -46,35 +46,38 @@ abstract class BaseController extends Controller
     */
     protected function getNavigationBarPages(): array
     {
-        if ( $this->session->get('isLoggedIn') )
+        if ( session()->get('isLoggedIn') )
         {
-            $privilegeLevel = $this->session->get("privilegeLevel");
+            $privilegeLevel = session()->get("privilegeLevel");
             switch ($privilegeLevel)
             {
                 default:
                     return array(
                         array('url' => site_url('/home'), 'btn_title' => "Home"),
                         array('url' => site_url('/about'), 'btn_title' => "About"),
-                        array('url' => site_url('/members/golf/booking'), 'btn_title' => "Book Golf"),
+                        array('url' => site_url('/members/golf/booking'), 'btn_title' => "Book<br>Golf"),
                         array('url' => site_url('/account/logout'), 'btn_title' => "Logout")
                     );
-                case 1 || 2 || 3 || 4 || 5:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
                     return array(
                         array('url' => site_url('/home'), 'btn_title' => "Home"),
                         array('url' => site_url('/about'), 'btn_title' => "About"),
-                        array('url' => site_url('/members/golf/booking'), 'btn_title' => "Book Golf"),
+                        array('url' => site_url('/members/golf/booking'), 'btn_title' => "Book<br>Golf"),
                         array('url' => site_url('/members/bar'), 'btn_title' => "Bar"),
-                        array('url' => site_url('/members'), 'btn_title' => "Member Portal"),
+                        array('url' => site_url('/members'), 'btn_title' => "Member<br>Portal"),
                         array('url' => site_url('/account/logout'), 'btn_title' => "Logout")
                     );
                 case 6:
                     return array(
                         array('url' => site_url('/home'), 'btn_title' => "Home"),
                         array('url' => site_url('/about'), 'btn_title' => "About"),
-                        array('url' => site_url('/members/golf/booking'), 'btn_title' => "Book Golf"),
+                        array('url' => site_url('/members/golf/booking'), 'btn_title' => "Book<br>Golf"),
                         array('url' => site_url('/members/bar'), 'btn_title' => "Bar"),
-                        array('url' => site_url('/members'), 'btn_title' => "Member Portal"),
-                        array('url' => site_url('/admin'), 'btn_title' => "Admin Panel"),
+                        array('url' => site_url('/members'), 'btn_title' => "Member<br>Portal"),
+                        array('url' => site_url('/admin'), 'btn_title' => "Admin<br>Panel"),
                         array('url' => site_url('/account/logout'), 'btn_title' => "Logout")
                     );
             }
@@ -92,8 +95,5 @@ abstract class BaseController extends Controller
     {
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
-
-        // Preload any models, libraries, etc, here.
-        $this->session = session();
     }
 }
