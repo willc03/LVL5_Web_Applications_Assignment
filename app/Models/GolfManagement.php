@@ -33,7 +33,6 @@ class GolfManagement extends Model
             // Times found
             $default_time_settings = $results->getResultArray()[0];
         }
-
         $start_time = strtotime($default_time_settings["StartTime"]);
         $end_time = strtotime($default_time_settings["EndTime"]);
         $current_time = $start_time;
@@ -43,8 +42,64 @@ class GolfManagement extends Model
             $elapsed_seconds = ($hours * 3600) + ($minutes * 60) + $seconds;
             $current_time += $elapsed_seconds;
         }
-
         return $availableTimes;
     }
+
+    /**
+     * This function will return the details of a booking that is made
+     * at the date and time provided (if it exists)
+     *
+     * @param $date
+     * @param $time
+     * @return array
+     */
+    public function getBookingAtTime($date, $time): array
+    {
+        $db = db_connect();
+        $builder = $db->table('GolfBooking');
+
+        // Escape and format input data
+        $query_date = date('Y-m-d', strtotime(esc($date)));
+        $query_time = date('H:i:s', strtotime(esc($time)));
+
+        // Retrieve booking data
+        $query = $builder->getWhere("BookingDate = '$query_date' AND BookingTime = '$query_time'");
+        $results = $query->getResultArray();
+
+        // Return the booking data with player information
+        if ($results) {
+            $results = $results[0];
+            $bookingId = $results['BookingId'];
+            $bookerId = $results['UserId'];
+
+            $playerBuilder = $db->table('GolfBookingPlayers');
+            $playerQuery = $playerBuilder->getWhere("BookingId = $bookingId");
+            $players = [];
+
+            $userBuilder = $db->table('Users');
+            $bookerResult = $userBuilder->getWhere("UserId = $bookerId");
+            $bookerDetails = $bookerResult->getResultArray()[0];
+
+            $players[] = $bookerDetails['Firstname'] . ' ' . $bookerDetails['Lastname'];
+
+            foreach ($playerQuery->getResultArray() as $player) {
+                $playerId = $player['PlayerId'];
+                if ($playerId != $bookerDetails['UserId']) {
+                    $playerResult = $userBuilder->getWhere("UserId = $playerId")->getResultArray()[0];
+                    $players[] = $playerResult['Firstname'] . ' ' . $playerResult['Lastname'];
+                }
+            }
+
+            return [
+                'id' => $results['BookingId'],
+                'time' => $results['BookingTime'],
+                'date' => $results['BookingDate'],
+                'players' => $players,
+            ];
+        }
+
+        return [];
+    }
+
 
 }
