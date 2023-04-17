@@ -59,6 +59,10 @@ $routes->get('/members/bar', 'Bar::index');
 // Golf
 $routes->get('/golf', 'Golf::index');
 
+// ADMINISTRATION
+// Admin home
+$routes->get('/admin', 'Admin::index');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
