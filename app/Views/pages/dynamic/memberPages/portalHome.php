@@ -12,21 +12,18 @@
                 <th>Player 4</th>
             </tr>
             <?php
-            $start_time = strtotime('7:00 AM');
-            $end_time = strtotime('7:00 PM');
-
-            $current_time = $start_time;
-
-            $um = model("GolfManagement");
-            $times = $um->GetTimesForDate(date('Y-m-d'));
+            $GolfManager = model("GolfManagement");
+            $times = $GolfManager->GetTimesForDate(date('Y-m-d'));
             foreach ($times as $time)
-            { ?>
+            {
+                $booking_details = $GolfManager->GetBookingAtTime(date('Ymd'), $time);
+                ?>
                 <tr>
                     <td><?php echo $time; ?></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><?php echo $booking_details["players"][0] ?? "" ?></td>
+                    <td><?php echo $booking_details["players"][1] ?? "" ?></td>
+                    <td><?php echo $booking_details["players"][2] ?? "" ?></td>
+                    <td><?php echo $booking_details["players"][3] ?? "" ?></td>
                 </tr>
             <?php } ?>
         </table>
