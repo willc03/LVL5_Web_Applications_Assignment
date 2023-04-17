@@ -52,10 +52,13 @@ $routes->get('/account/logout', 'Login::logout');
 // MEMBERS
 // Members portal
 $routes->get('/members', 'Members::index');
+// Bar
+$routes->get('/members/bar', 'Bar::index');
 
 // GOLF
 // Golf
 $routes->get('/golf', 'Golf::index');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
