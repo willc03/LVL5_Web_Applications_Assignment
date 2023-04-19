@@ -1,4 +1,4 @@
-<div id="fgcMap" style="width:500px;height:500px;"></div>
+<div id="fgcMap"></div>
 <script>
     function initialise() {
         var mapProp = {

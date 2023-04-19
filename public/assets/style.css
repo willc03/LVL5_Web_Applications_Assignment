@@ -58,6 +58,10 @@ body.members {
 #main {
     overflow: auto;
 }
+#fgcMap {
+    width: 70%;
+    height: 200px;
+}
 
 /*
 
