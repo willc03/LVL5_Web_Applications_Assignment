@@ -43,12 +43,14 @@ class Login extends BaseController
      */
     private function ProcessSignUpRequestItems($postItems) // Back-end form validation
     {
+        $index = 0;
         foreach ($postItems as $item)
         {
             if (strlen($item) <= 0)
             {
                 return false;
             }
+            $postItems[$index] = esc($item);
         }
         return true;
     }
