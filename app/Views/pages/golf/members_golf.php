@@ -1,4 +1,6 @@
 <?php
+helper('form');
+
 $GolfManager = model("GolfManagement");
 $date = isset($_GET['date']) ? date($_GET['date']) : date('Y-m-d');
 ?>
@@ -6,15 +8,24 @@ $date = isset($_GET['date']) ? date($_GET['date']) : date('Y-m-d');
 <div id="booking_tee_sheet">
     <br>
     <div id="dateSelector">
-        <form id="date_selector_tee_sheet" method="get" action="<?php echo site_url('/golf'); ?>">
-            <input type="submit" value="Previous Day">
-            <input type="hidden" name="date" value="<?php echo date('Y-m-d', strtotime($date . ' -1 day')); ?>">
-        </form>
+        <?php
+            echo form_open(site_url('/golf'), ['method'=>'get', 'id'=>'ds_w_calendar']);
+            echo form_input('date', date('Y-m-d', strtotime($date)), ['id'=>'date_picker', 'oninput'=>'document.getElementById("ds_w_calendar").submit();', 'min'=>date('Y-m-d', strtotime(date('Y-m-d') . ' -4 weeks')), 'max'=>date('Y-m-d', strtotime(date('Y-m-d') . ' +4 weeks'))], 'date');
+            echo form_close();
+            $prev_date = date('Y-m-d', strtotime($date . ' -1 day')) < date('Y-m-d', strtotime(date('Y-m-d') . ' -4 weeks')) ? date('Y-m-d', strtotime(date('Y-m-d') . ' -4 weeks')) : date('Y-m-d', strtotime($date . ' -1 day'));
+            echo form_open(site_url('/golf'), ['method'=>'get', 'id'=>'date_selector_tee_sheet']);
+            echo form_input('date', $prev_date, null, 'hidden');
+            echo form_submit('submit', 'Previous Day');
+            echo form_close();
+        ?>
         <h2>Tee Sheet for <?php echo date('l jS F Y', strtotime($date)); ?></h2>
-        <form id="date_selector_tee_sheet" method="get" action="<?php echo site_url('/golf'); ?>">
-            <input type="submit" value="Next Day">
-            <input type="hidden" name="date" value="<?php echo date('Y-m-d', strtotime($date . ' +1 day')); ?>">
-        </form>
+        <?php
+        $next_date = date('Y-m-d', strtotime($date . ' +1 day')) > date('Y-m-d', strtotime(date('Y-m-d') . ' +4 weeks')) ? date('Y-m-d', strtotime(date('Y-m-d') . ' +4 weeks')) : date('Y-m-d', strtotime($date . ' +1 day'));
+        echo form_open(site_url('/golf'), ['method'=>'get', 'id'=>'date_selector_tee_sheet']);
+        echo form_input('date', $next_date, null, 'hidden');
+        echo form_submit('submit', 'Next Day');
+        echo form_close();
+        ?>
     </div>
     <br>
     <div id="teeSheetBox">
