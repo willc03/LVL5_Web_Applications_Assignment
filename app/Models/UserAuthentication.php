@@ -63,7 +63,8 @@ class UserAuthentication extends Model
      */
     public function AuthenticateUser($email, $password): string
     {
-
+        esc($email);
+        esc($password);
         $DoesUserExist = $this->ResolveUserFromEmail($email);
         if (!$DoesUserExist)
         {
@@ -117,6 +118,7 @@ class UserAuthentication extends Model
      */
     public function GetUserPrivilege($email)
     {
+        $email = esc($email);
         $DoesUserExist = $this->ResolveUserFromEmail($email);
         if ($DoesUserExist)
         {
