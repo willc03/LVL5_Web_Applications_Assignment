@@ -3,27 +3,33 @@ namespace App\Controllers;
 
 class Golf extends BaseController
 {
-    public function index()
+    /**
+     * This controller function will be used to display the contents of the core
+     * golf page, which will  have an overview of the tee time sheet and buttons
+     * which will redirect the user to create a new booking or edit their exist-
+     * ing bookings.
+     * 
+     * @return string (returns pages to be viewed)
+     */
+    public function index(): string
     {
-        $isLoggedIn = session()->get('isLoggedIn');
-        // Redirect the user if they are not logged in as a member or visitor
-        if (!$isLoggedIn)
+        // Security check to disallow users to access the page if they are not logged in
+        if (!session()->has('isLoggedIn'))
         {
             return redirect()->to(site_url('/home?error=not_logged_in'));
         }
-        // Choose page
-        $page_to_view = 'visitorGolf';
-        if ( session()->get("privilegeLevel") >= 2 )
+        // Set whether to return the page for visitors golf or members golf
+        $page_to_view = 'visitors_golf';
+        if ( session()->get("privilegeLevel") >= 2 ) // Change the view to the member golf page if they are a member (2 or higher privilege)
         {
-            $page_to_view = 'memberGolf';
+            $page_to_view = 'members_golf';
         }
-        // Set up data
+        // Get the navigation pages and page title
         $data['title'] = 'Golf';
-
         $data['nav_pages'] = $this->getNavigationBarPages();
         // View pages
         return view('templates/memberTemplates/header', $data)
-             . view('pages/dynamic/memberPages/' . $page_to_view)
+             . view('pages/golf/' . $page_to_view)
              . view('templates/memberTemplates/footer');
     }
 
