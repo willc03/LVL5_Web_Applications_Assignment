@@ -23,43 +23,56 @@
 
     echo form_open(site_url('/account/create/request'), ['id' => "signup_form", 'class' => "flex_container"]); // Open a POST form that redirects to /login/request for processing
     // First name:
-    echo form_label('First name:', 'fname');
-    echo form_input('fname');
+    echo form_label('First name:', 'fname', ['class' => 'required']);
+    echo form_input('fname', '', ['required'=>'']);
     // Last name:
-    echo form_label('Last name:', 'lname');
-    echo form_input('lname');
+    echo form_label('Last name:', 'lname', ['class' => 'required']);
+    echo form_input('lname', '', ['required'=>'']);
     // Date of birth:
-    echo form_label("Date of birth:", 'dob');
-    echo form_input('dob', '', '', 'date');
+    echo form_label("Date of birth:", 'dob', ['class' => 'required']);
+    echo form_input('dob', '', ['required'=>''], 'date');
     // Address line 1:
-    echo form_label('Address line 1:', 'ad1');
-    echo form_input('ad1');
+    echo form_label('Address line 1:', 'ad1', ['class' => 'required']);
+    echo form_input('ad1', '', ['required'=>'']);
     // Address line 2:
     echo form_label('Address line 2:', 'ad2');
     echo form_input('ad2');
     // Town:
-    echo form_label('Town:', 'town');
-    echo form_input('town');
+    echo form_label('Town:', 'town', ['class' => 'required']);
+    echo form_input('town', '', ['required'=>'']);
     // County:
-    echo form_label('County:', 'county');
-    echo form_input('county');
+    echo form_label('County:', 'county', ['class' => 'required']);
+    echo form_input('county', '', ['required'=>'']);
     // Postcode:
-    echo form_label('Postcode:', 'pcode');
-    echo form_input('pcode');
+    echo form_label('Postcode:', 'pcode', ['class' => 'required']);
+    echo form_input('pcode', '', ['required'=>'']);
     // Email:
-    echo form_label('Email:', 'email');
-    echo form_input('email', '', '', 'email');
+    echo form_label('Email:', 'email', ['class' => 'required']);
+    echo form_input('email', '', ['onkeyup' => "onEmailKeyUp()", 'required'=>''], 'email');
     // Password:
-    echo form_label('Password:', 'password');
-    echo form_password('password');
+    echo form_label('Password:', 'password', ['class'=>'required']);
+    echo form_password('password', '', ['id' => "signUpPassword", 'onkeyup' => "onPasswordKeyUp()", 'required'=>'']);
     // Submit: as the form is a POST requesting form, the route will need to be a POST route, not a GET route.
     ?><br><?php
     echo form_submit('submit', 'Sign up');
     echo form_close();
 ?>
+<script>
+    // Set the validity for passwords
+    const passwordBox = document.getElementById(`signUpPassword`);
+    function onPasswordKeyUp()
+    {
+        if (passwordBox.value.length < 8)
+        {
+            return passwordBox.setCustomValidity("Passwords must contain at least 8 characters!");
+        }
+        return passwordBox.setCustomValidity();
+    };
+    onPasswordKeyUp();
+</script>
 <br>
 <div id="log_in_container" class="flex_container">
     <p>Already have an account?</p>
     <br>
-    <a id="login_button" href="<?php echo site_url('/login')?>">Log in</a>
+    <a id="login_button" href="<?php echo site_url('/account/login')?>">Log in</a>
 </div>
