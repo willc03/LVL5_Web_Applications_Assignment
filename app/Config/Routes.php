@@ -56,8 +56,12 @@ $routes->get('/members', 'Members::index');
 $routes->get('/members/bar', 'Bar::index');
 
 // GOLF
-// Golf
-$routes->get('/golf', 'Golf::index');
+// golf
+$routes->get('/golf', 'golf::index');
+$routes->get('/golf/booking/', 'golf::booking/redirect'); // Don't allow direct access to /booking
+$routes->get('/golf/booking/(:num)', 'golf::booking/$1'); // For editing existing bookings
+$routes->get('/golf/booking/create', 'golf::newBooking/GET'); // For creating a new booking
+$routes->post('/golf/booking/create', 'golf::newBooking/POST'); // POST: for adding new booking to the database
 
 // ADMINISTRATION
 // Admin home
