@@ -26,4 +26,26 @@ class Golf extends BaseController
              . view('pages/dynamic/memberPages/' . $page_to_view)
              . view('templates/memberTemplates/footer');
     }
+
+    /**
+     * This controller function will be used to deliver the page and necessary
+     * security for creating new bookings.
+     *
+     * @return void
+     */
+    public function newBooking($requestType): string
+    {
+        if ($requestType == "POST") // If the booking request is made
+        {
+
+        }
+        else // If the page's HTML is being requested
+        {
+            $data["title"] = "Create Booking";
+            $data["nav_pages"] = $this->getNavigationBarPages();
+            return view('templates/memberTemplates/header', $data)
+                 . view('pages/golf/booking_create')
+                 . view('templates/memberTemplates/footer');
+        }
+    }
 }
