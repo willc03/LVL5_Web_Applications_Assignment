@@ -28,11 +28,11 @@
 
     echo form_open(site_url('/account/login/request'), ['id' => "login_form", 'class' => "flex_container"]); // Open a POST form that redirects to /login/request for processing
     // Email:
-    echo form_label('Email:', 'email');
-    echo form_input('email', '', '', 'email');
+    echo form_label('Email:', 'email', ['class' => 'required']);
+    echo form_input('email', '', ['required'=>''], 'email');
     // Password:
-    echo form_label('Password:', 'password');
-    echo form_password('password');
+    echo form_label('Password:', 'password', ['class' => 'required']);
+    echo form_password('password', '', ['required'=>'']);
     // Submit: as the form is a POST requesting form, the route will need to be a POST route, not a GET route.
     ?><br><?php
     echo form_submit('submit', 'Log in');
