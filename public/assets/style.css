@@ -264,3 +264,24 @@ body.members table.teeSheet tr:first-child {
     border: 1px solid rgba(0, 21, 64, 0.95);
     color: rgba(0, 21, 64, 0.95);
 }
+#btn_new_booking input, #date_selector_tee_sheet input, #ds_w_calendar input {
+    background: none;
+    border: 1px solid var(--primary-white);
+    border-radius: 5px;
+    color: var(--primary-white);
+    transition: 0.5s;
+    font-weight: 1000;
+}
+#dateSelector {
+    display: flex;
+    justify-content: space-around;
+}
+#date_selector_tee_sheet input, #ds_w_calendar input {
+    font-size: medium;
+    padding: 0px 15px;
+    height: 100%;
+}
+#btn_new_booking input:hover, #date_selector_tee_sheet input:hover, #ds_w_calendar input:hover {
+    background-color: var(--primary-white);
+    color: var(--background-blue);
+}
