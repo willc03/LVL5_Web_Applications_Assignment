@@ -19,6 +19,7 @@ cause a change across the entire website.
     --form-deselected: rgb(95, 95, 95);
     --header-green: linear-gradient(0deg, rgba(10,96,16,1) 0%, rgba(9,121,17,1) 47%, rgba(25,142,24,1) 100%);
     --header-blue: #153050;
+    --background-blue: #374A60
 }
 
 * { /* Some behaviour enforced by default by the browser must be overridden. */
@@ -44,7 +45,7 @@ html, body {
     height: 100%;
 }
 body.members {
-    background-color: #374A60;
+    background-color: var(--background-blue);
 }
 #footerWrap {
     min-height: calc(100% - 25px);
@@ -201,6 +202,10 @@ The next section will be used to style the forms on the login/signup pages
     background-color: var(--primary-green);
     color: var(--primary-white);
 }
+label.required:after {
+    content: " *"!important;
+    color: red;
+}
 
 /*
 Style all message boxes.
@@ -239,7 +244,6 @@ body.members #teeSheetBox {
 #tee_sheet_overview {
     width: 50%;
 }
-
 body.members #tee_sheet_overview h2, body.members #booking_tee_sheet h2 {
     color: var(--primary-white);
     text-align: center;
@@ -256,6 +260,11 @@ body.members table.teeSheet {
 body.members table.teeSheet th, body.members table.teeSheet td {
     border: 1px solid var(--primary-white);
     height: 25px;
+}
+body.members table.teeSheet td:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 body.members table.teeSheet tr:first-child {
     position: sticky;
