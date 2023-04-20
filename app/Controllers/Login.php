@@ -93,7 +93,14 @@ class Login extends BaseController
             session()->set("isLoggedIn", true);
             session()->set("userId", $UserAuthModel->GetUserId($_POST['email']));
             session()->set("privilegeLevel", $UserAuthModel->GetUserPrivilege($_POST['email']));
-            return redirect()->to(site_url('/members'));
+            if (session()->get("privilegeLevel") < 2)
+            {
+                return redirect()->to(site_url('/golf'));
+            }
+            else
+            {
+                return redirect()->to(site_url('/members'));
+            }
         }
         else
         {
