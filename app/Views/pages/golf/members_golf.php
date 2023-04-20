@@ -1,3 +1,15 @@
+<?php if (isset($_GET["error"]) && $_GET["error"] == "booking_conflict") {?>
+    <div class="message_box error">
+        <h2>Error: Booking Conflict</h2>
+        <p>A booking already exists at this date and time!</p>
+    </div>
+<?php } elseif (isset($_GET["error"]) && $_GET["error"] == "insufficient_data") { ?>
+    <div class="message_box error">
+        <h2>Error: Data missing</h2>
+        <p>Invalid time selected! Please try again.</p>
+    </div>
+<?php } ?>
+
 <?php
 helper('form');
 
