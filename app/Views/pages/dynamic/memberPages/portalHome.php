@@ -2,7 +2,7 @@
 
 <div id="tee_sheet_overview">
     <h2>Tee Sheet Overview</h2>
-    <div id="teeSheetBox">
+    <div id="teeSheetBox" class="overview">
         <table class="teeSheet">
             <tr>
                 <th>Time</th>
