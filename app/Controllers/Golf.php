@@ -68,4 +68,12 @@ class Golf extends BaseController
                  . view('templates/memberTemplates/footer');
         }
     }
+
+    public function booking()
+    {
+        $data['title'] = 'Edit Booking';
+        $data['nav_pages'] = $this->getNavigationBarPages();
+        return view('templates/memberTemplates/header', $data)
+             . view('templates/memberTemplates/footer');
+    }
 }
