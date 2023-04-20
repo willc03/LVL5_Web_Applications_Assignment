@@ -135,4 +135,29 @@ class UserAuthentication extends Model
         }
     }
 
+    /**
+     * This function will return the ID of a user
+     *
+     * @param $email
+     * @return mixed|void
+     */
+    public function GetUserId($email)
+    {
+        $email = esc($email);
+        $DoesUserExist = $this->ResolveUserFromEmail($email);
+        if ($DoesUserExist)
+        {
+            $db = db_connect();
+            $builder = $db->table("Users");
+
+            $userRecord = $builder->getWhere(["Email" => $email]);
+            $userRecordArray = $userRecord->getResultArray();
+            return $userRecordArray[0]["UserId"];
+        }
+        else
+        {
+            error_log("The email provided doesn't correspond to a user account.");
+        }
+    }
+
 }
