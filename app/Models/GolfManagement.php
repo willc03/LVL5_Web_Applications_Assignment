@@ -53,7 +53,7 @@ class GolfManagement extends Model
      * @param $time
      * @return array
      */
-    public function getBookingAtTime($date, $time): array
+    public function GetBookingAtTime($date, $time): array
     {
         $db = db_connect();
         $builder = $db->table('GolfBooking');
