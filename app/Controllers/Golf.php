@@ -9,9 +9,9 @@ class Golf extends BaseController
      * which will redirect the user to create a new booking or edit their exist-
      * ing bookings.
      * 
-     * @return string (returns pages to be viewed)
+     * @return any (returns pages to be viewed)
      */
-    public function index(): string
+    public function index()
     {
         // Security check to disallow users to access the page if they are not logged in
         if (!session()->has('isLoggedIn'))
@@ -33,13 +33,13 @@ class Golf extends BaseController
              . view('templates/memberTemplates/footer');
     }
 
-    /**
+    /*
      * This controller function will be used to deliver the page and necessary
      * security for creating new bookings.
      *
-     * @return void
+     * @return any
      */
-    public function newBooking($requestType): string
+    public function newBooking($requestType)
     {
         if ($requestType == "POST") // If the booking request is made
         {
@@ -47,6 +47,20 @@ class Golf extends BaseController
         }
         else // If the page's HTML is being requested
         {
+            // Validation to ensure the necessary items are stored
+            if (!isset($_GET['time']) || !isset($_GET['date']))
+            {
+                return redirect()->to(site_url('/golf?error=insufficient_data'));
+            }
+            else
+            {
+                $GolfManager = model("GolfManagement");
+                if ( count($GolfManager->GetBookingAtTime(esc($_GET['date']), esc($_GET['time']))) > 0 )
+                {
+                    return redirect()->to(site_url('/golf?error=booking_conflict'));
+                }
+            }
+            // Page data to be passed in
             $data["title"] = "Create Booking";
             $data["nav_pages"] = $this->getNavigationBarPages();
             return view('templates/memberTemplates/header', $data)
