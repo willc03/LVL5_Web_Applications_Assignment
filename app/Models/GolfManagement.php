@@ -80,13 +80,13 @@ class GolfManagement extends Model
             $bookerResult = $userBuilder->getWhere("UserId = $bookerId");
             $bookerDetails = $bookerResult->getResultArray()[0];
 
-            $players[] = $bookerDetails['Firstname'] . ' ' . $bookerDetails['Lastname'];
+            $players[] = array($bookerDetails['UserId'], $bookerDetails['Firstname'] . ' ' . $bookerDetails['Lastname']);
 
             foreach ($playerQuery->getResultArray() as $player) {
                 $playerId = $player['PlayerId'];
                 if ($playerId != $bookerDetails['UserId']) {
                     $playerResult = $userBuilder->getWhere("UserId = $playerId")->getResultArray()[0];
-                    $players[] = $playerResult['Firstname'] . ' ' . $playerResult['Lastname'];
+                    $players[] = array($playerResult['UserId'], $playerResult['Firstname'] . ' ' . $playerResult['Lastname']);
                 }
             }
 
