@@ -15,6 +15,9 @@ helper('form');
 
 $GolfManager = model("GolfManagement");
 $date = isset($_GET['date']) ? date($_GET['date']) : date('Y-m-d');
+// Validation to ensure the target date is within 4 weeks of the current date
+$date = $date < date('Y-m-d', strtotime(date('Y-m-d') . ' -4 weeks')) ? date('Y-m-d', strtotime(date('Y-m-d') . ' -4 weeks')) : $date;
+$date = $date > date('Y-m-d', strtotime(date('Y-m-d') . ' +4 weeks')) ? date('Y-m-d', strtotime(date('Y-m-d') . ' +4 weeks')) : $date;
 ?>
 
 <div id="booking_tee_sheet">
