@@ -313,4 +313,18 @@ a#btn_edit_booking:hover, a#btn_delete_booking:hover {
     color: var(--background-blue);
     background-color: var(--primary-white);
 }
+
+.info_container {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    align-content: space-between;
+    color: var(--primary-white);
+}
+.info_container > * {
+    height: 100%;
+}
+.info_container .title {
+    color: var(--primary-white);
+    margin-right: 10px;
 }
