@@ -8,6 +8,21 @@
         <h2>Error: Data missing</h2>
         <p>Invalid time selected! Please try again.</p>
     </div>
+<?php } elseif (isset($_GET["error"]) && ($_GET["error"] == "booking_not_found" || $_GET["error"] == "unknown_deletion_error")) { ?>
+    <div class="message_box error">
+        <h2>Error: Booking not found</h2>
+        <p>The booking couldn't be deleted as it does not exist!</p>
+    </div>
+<?php } elseif (isset($_GET["error"]) && $_GET["error"] == "invalid_selection") { ?>
+    <div class="message_box error">
+        <h2>Error: Couldn't delete booking</h2>
+        <p>Only the creator of a booking can delete it.</p>
+    </div>
+<?php } elseif (isset($_GET["message"]) && $_GET["message"] == "booking_deleted") { ?>
+    <div class="message_box success">
+        <h2>Booking Deleted</h2>
+        <p>Your booking has been removed from the system.</p>
+    </div>
 <?php } ?>
 
 <?php
@@ -19,6 +34,21 @@ $date = isset($_GET['date']) ? date($_GET['date']) : date('Y-m-d');
 $date = $date < date('Y-m-d', strtotime(date('Y-m-d') . ' -4 weeks')) ? date('Y-m-d', strtotime(date('Y-m-d') . ' -4 weeks')) : $date;
 $date = $date > date('Y-m-d', strtotime(date('Y-m-d') . ' +4 weeks')) ? date('Y-m-d', strtotime(date('Y-m-d') . ' +4 weeks')) : $date;
 ?>
+
+<div id="deletion_overlay">
+    <div id="content">
+        <h2>You are about to delete a booking.</h2>
+        <p>Are you sure you wish to delete this booking?</p>
+        <p><span style="color: red;">This action cannot be reversed.</span></p>
+        <div id="options">
+            <form method="post" action="<?php echo site_url('/golf/booking/delete'); ?>">
+                <input type="hidden" id="deleteId" name="deleteId">
+                <input type="submit" value="Yes">
+            </form>
+            <button onclick="document.getElementById('deletion_overlay').style.display = 'none'">No</button>
+        </div>
+    </div>
+</div>
 
 <div id="booking_tee_sheet">
     <br>
@@ -78,10 +108,9 @@ $date = $date > date('Y-m-d', strtotime(date('Y-m-d') . ' +4 weeks')) ? date('Y-
                             if ( (session()->has('privilegeLevel') && session()->get('privilegeLevel') >= 5) || $booking_details["players"][0][0] == session()->get('userId') ) // If they're staff
                             { ?>
                                 <a id="btn_edit_booking" href="<?php echo site_url('/golf/booking/' . $booking_details["id"]); ?>">EDIT</a>
-                                <a id="btn_delete_booking" href="<?php echo site_url('/golf/booking/' . $booking_details["id"]); ?>">DELETE</a>
+                                <button id="btn_delete_booking" onclick="document.getElementById('deletion_overlay').style.display = 'flex'; document.getElementById('deleteId').setAttribute('value', <?php echo $booking_details['id']; ?>)">DELETE</button>
                             <?php }
                         }
-
                         ?></td>
                         <td><?php echo $booking_details["players"][0][1] ?? "" ?></td>
                         <td><?php echo $booking_details["players"][1][1] ?? "" ?></td>

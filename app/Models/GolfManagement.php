@@ -20,7 +20,6 @@ class GolfManagement extends Model
         $escapedDate = $db->escape($date); // Prevents SQL injection
         $results = $builder->getWhere("$escapedDate BETWEEN StartDate AND EndDate"); // Query results where the row's dates contain the date provided
         // Return the relevant results to the player
-        $default_time_settings = null;
         $availableTimes = array();
         if (!$results || count($results->getResultArray()) == 0)
         {
@@ -101,5 +100,77 @@ class GolfManagement extends Model
         return [];
     }
 
+    public function GetBookingFromId($id)
+    {
+        $db = db_connect();
+        $builder = $db->table('GolfBooking');
+
+        // Escape the booking ID
+        $id = esc($id);
+        $id = intval($id);
+        // Retrieve booking data
+        $query = $builder->getWhere("BookingId = $id");
+        $results = $query->getResultArray();
+
+        // Return the booking data with player information
+        if ($results) {
+            $results = $results[0];
+            $bookingId = $results['BookingId'];
+            $bookerId = $results['UserId'];
+
+            $playerBuilder = $db->table('GolfBookingPlayers');
+            $playerQuery = $playerBuilder->getWhere("BookingId = $bookingId");
+            $players = [];
+
+            $userBuilder = $db->table('Users');
+            $bookerResult = $userBuilder->getWhere("UserId = $bookerId");
+            $bookerDetails = $bookerResult->getResultArray()[0];
+
+            $players[] = array($bookerDetails['UserId'], $bookerDetails['Firstname'] . ' ' . $bookerDetails['Lastname']);
+
+            foreach ($playerQuery->getResultArray() as $player) {
+                $playerId = $player['PlayerId'];
+                if ($playerId != $bookerDetails['UserId']) {
+                    $playerResult = $userBuilder->getWhere("UserId = $playerId")->getResultArray()[0];
+                    $players[] = array($playerResult['UserId'], $playerResult['Firstname'] . ' ' . $playerResult['Lastname']);
+                }
+            }
+
+            return [
+                'id' => $results['BookingId'],
+                'time' => $results['BookingTime'],
+                'date' => $results['BookingDate'],
+                'players' => $players,
+            ];
+        }
+        return [];
+    }
+
+    public function DeleteBooking($id)
+    {
+        $db = db_connect();
+        $builder = $db->table('GolfBooking');
+
+        // Escape the booking ID
+        $id = esc($id);
+        // Retrieve booking data
+        $query = $builder->getWhere("BookingId = $id");
+        $results = $query->getResultArray();
+
+        // Return the booking data with player information
+        if ($results) {
+            $results = $results[0];
+            $bookingId = $results['BookingId'];
+
+            $playerBuilder = $db->table('GolfBookingPlayers');
+            $playerBuilder->delete(['BookingId'=>$bookingId]);
+
+            $builder->delete(['BookingId'=>$id]);
+
+            return true;
+        }
+
+        return false;
+    }
 
 }

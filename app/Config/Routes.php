@@ -62,6 +62,7 @@ $routes->get('/golf/booking/', 'golf::booking/redirect'); // Don't allow direct 
 $routes->get('/golf/booking/(:num)', 'golf::booking/$1'); // For editing existing bookings
 $routes->get('/golf/booking/create', 'golf::newBooking/GET'); // For creating a new booking
 $routes->post('/golf/booking/create', 'golf::newBooking/POST'); // POST: for adding new booking to the database
+$routes->post('/golf/booking/delete', 'golf::deleteBooking'); // POST: to delete bookings
 
 // ADMINISTRATION
 // Admin home

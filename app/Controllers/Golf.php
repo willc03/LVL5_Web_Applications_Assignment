@@ -76,4 +76,33 @@ class Golf extends BaseController
         return view('templates/memberTemplates/header', $data)
              . view('templates/memberTemplates/footer');
     }
+
+    public function deleteBooking()
+    {
+        $GolfManager = model("GolfManagement");
+        if (!session()->has('isLoggedIn'))
+        {
+            return redirect()->to(site_url('/home?error=not_logged_in'));
+        } else {
+            $bookingResult = $GolfManager->GetBookingFromId($_POST['deleteId']);
+            if (count($bookingResult) == 0)
+            {
+                return redirect()->to(site_url('/golf?error=booking_not_found'));
+            } else {
+                if (session()->get('userId') == $bookingResult['players'][0][0])
+                {
+                    // Delete the booking
+                    if ($GolfManager->DeleteBooking($_POST['deleteId'])) {
+                        return redirect()->to(site_url('/golf?message=booking_deleted'));
+                    } else {
+                        return redirect()->to(site_url('/golf?error=unknown_deletion_error'));
+                    }
+                }
+                else
+                {
+                    return redirect()->to(site_url('/golf?error=invalid_selection'));
+                }
+            }
+        }
+    }
 }
