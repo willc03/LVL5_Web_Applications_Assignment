@@ -67,20 +67,26 @@ $date = $date > date('Y-m-d', strtotime(date('Y-m-d') . ' +4 weeks')) ? date('Y-
                     <tr>
                         <td><?php echo '<p>'.$time.'</p>';
 
-                        if (($booking_details["players"][0] ?? "") == "")
+                        if (($booking_details["players"][0][1] ?? "") == "")
                         { ?>
                             <form id="btn_new_booking" method="get" action="<?php echo site_url('/golf/booking/create'); ?>">
                                 <input type="hidden" name="time" value="<?php echo $time; ?>">
                                 <input type="hidden" name="date" value="<?php echo $date; ?>">
                                 <input type="submit" value="+">
                             </form>
-                        <?php }
+                        <?php } else { // Allow the user to see edit and delete buttons if they are an admin or the user who created the booking
+                            if ( (session()->has('privilegeLevel') && session()->get('privilegeLevel') >= 5) || $booking_details["players"][0][0] == session()->get('userId') ) // If they're staff
+                            { ?>
+                                <a id="btn_edit_booking" href="<?php echo site_url('/golf/booking/' . $booking_details["id"]); ?>">EDIT</a>
+                                <a id="btn_delete_booking" href="<?php echo site_url('/golf/booking/' . $booking_details["id"]); ?>">DELETE</a>
+                            <?php }
+                        }
 
                         ?></td>
-                        <td><?php echo $booking_details["players"][0] ?? "" ?></td>
-                        <td><?php echo $booking_details["players"][1] ?? "" ?></td>
-                        <td><?php echo $booking_details["players"][2] ?? "" ?></td>
-                        <td><?php echo $booking_details["players"][3] ?? "" ?></td>
+                        <td><?php echo $booking_details["players"][0][1] ?? "" ?></td>
+                        <td><?php echo $booking_details["players"][1][1] ?? "" ?></td>
+                        <td><?php echo $booking_details["players"][2][1] ?? "" ?></td>
+                        <td><?php echo $booking_details["players"][3][1] ?? "" ?></td>
                     </tr>
             <?php } ?>
         </table>
