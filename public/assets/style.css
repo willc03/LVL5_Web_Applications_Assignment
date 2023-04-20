@@ -235,7 +235,6 @@ body.members h1 {
     color: var(--primary-white);
 }
 body.members #teeSheetBox {
-    height: 200px;
     overflow: auto;
     overscroll-behavior-y: none;
     border: 2px solid var(--primary-white);
@@ -256,7 +255,6 @@ body.members #tee_sheet_overview h2, body.members #booking_tee_sheet h2 {
 }
 body.members table.teeSheet {
     border: 1px solid var(--primary-white);
-    border-collapse: collapse;
     color: var(--primary-white);
     table-layout: fixed;
     text-align: center;
@@ -270,11 +268,11 @@ body.members table.teeSheet th, body.members table.teeSheet td {
 body.members table.teeSheet td:first-child {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 body.members table.teeSheet tr:first-child {
     position: sticky;
-    top: 0;
+    top: -1px;
     background-color: var(--primary-white);
     border: 1px solid rgba(0, 21, 64, 0.95);
     color: rgba(0, 21, 64, 0.95);
@@ -293,10 +291,26 @@ body.members table.teeSheet tr:first-child {
 }
 #date_selector_tee_sheet input, #ds_w_calendar input {
     font-size: medium;
-    padding: 0px 15px;
+    padding: 0 15px 0 15px;
     height: 100%;
 }
 #btn_new_booking input:hover, #date_selector_tee_sheet input:hover, #ds_w_calendar input:hover {
     background-color: var(--primary-white);
     color: var(--background-blue);
+}
+
+a#btn_edit_booking, a#btn_delete_booking {
+    background-color: var(--background-blue);
+    color: var(--primary-white);
+    font-size: xx-small;
+    border: 1px solid var(--primary-white);
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 3px 6px;
+    transition-duration: 0.5s;
+}
+a#btn_edit_booking:hover, a#btn_delete_booking:hover {
+    color: var(--background-blue);
+    background-color: var(--primary-white);
+}
 }
