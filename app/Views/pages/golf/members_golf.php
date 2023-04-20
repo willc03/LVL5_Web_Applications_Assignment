@@ -24,22 +24,28 @@ $date = $date > date('Y-m-d', strtotime(date('Y-m-d') . ' +4 weeks')) ? date('Y-
     <br>
     <div id="dateSelector">
         <?php
+            // Create a calendar where the user can select a date from a date picker
             echo form_open(site_url('/golf'), ['method'=>'get', 'id'=>'ds_w_calendar']);
             echo form_input('date', date('Y-m-d', strtotime($date)), ['id'=>'date_picker', 'oninput'=>'document.getElementById("ds_w_calendar").submit();', 'min'=>date('Y-m-d', strtotime(date('Y-m-d') . ' -4 weeks')), 'max'=>date('Y-m-d', strtotime(date('Y-m-d') . ' +4 weeks'))], 'date');
             echo form_close();
-            $prev_date = date('Y-m-d', strtotime($date . ' -1 day')) < date('Y-m-d', strtotime(date('Y-m-d') . ' -4 weeks')) ? date('Y-m-d', strtotime(date('Y-m-d') . ' -4 weeks')) : date('Y-m-d', strtotime($date . ' -1 day'));
+            // Create a button to change to the previous date
             echo form_open(site_url('/golf'), ['method'=>'get', 'id'=>'date_selector_tee_sheet']);
-            echo form_input('date', $prev_date, null, 'hidden');
+            echo form_input('date', date('Y-m-d', strtotime($date . ' -1 day')), null, 'hidden');
             echo form_submit('submit', 'Previous Day');
             echo form_close();
         ?>
         <h2>Tee Sheet for <?php echo date('l jS F Y', strtotime($date)); ?></h2>
         <?php
-        $next_date = date('Y-m-d', strtotime($date . ' +1 day')) > date('Y-m-d', strtotime(date('Y-m-d') . ' +4 weeks')) ? date('Y-m-d', strtotime(date('Y-m-d') . ' +4 weeks')) : date('Y-m-d', strtotime($date . ' +1 day'));
-        echo form_open(site_url('/golf'), ['method'=>'get', 'id'=>'date_selector_tee_sheet']);
-        echo form_input('date', $next_date, null, 'hidden');
-        echo form_submit('submit', 'Next Day');
-        echo form_close();
+            // Create a button to change to the next date
+            echo form_open(site_url('/golf'), ['method'=>'get', 'id'=>'date_selector_tee_sheet']);
+            echo form_input('date', date('Y-m-d', strtotime($date . ' +1 day')), null, 'hidden');
+            echo form_submit('submit', 'Next Day');
+            echo form_close();
+            // Create a button to change to the current server date
+            echo form_open(site_url('/golf'), ['method'=>'get', 'id'=>'date_selector_tee_sheet']);
+            echo form_input('date', date('Y-m-d'), null, 'hidden');
+            echo form_submit('submit', 'Today');
+            echo form_close();
         ?>
     </div>
     <br>
