@@ -91,6 +91,7 @@ class Login extends BaseController
         if ( $UserAuthentication == "Success" )
         {
             session()->set("isLoggedIn", true);
+            session()->set("userId", $UserAuthModel->GetUserId($_POST['email']));
             session()->set("privilegeLevel", $UserAuthModel->GetUserPrivilege($_POST['email']));
             return redirect()->to(site_url('/members'));
         }
