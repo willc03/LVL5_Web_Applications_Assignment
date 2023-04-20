@@ -43,7 +43,7 @@ $date = $date > date('Y-m-d', strtotime(date('Y-m-d') . ' +4 weeks')) ? date('Y-
         ?>
     </div>
     <br>
-    <div id="teeSheetBox">
+    <div id="teeSheetBox" class="detailed">
         <table class="teeSheet">
             <tr>
                 <th>Time</th>
