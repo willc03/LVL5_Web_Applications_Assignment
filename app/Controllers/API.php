@@ -9,7 +9,7 @@ class API extends BaseController
         // Redirect the user if they are not logged in as a member or visitor
         if (!$isLoggedIn)
         {
-            return redirect()->to(site_url('/home?error=not_logged_in'));
+            return json_encode(array('error'=>"Access Denied", 'message'=>'An account must be logged in to use this API.'));
         }
         //
         $APIModel = model("API");
