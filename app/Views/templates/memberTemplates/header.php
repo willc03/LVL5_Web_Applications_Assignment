@@ -6,7 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <!-- Enables responsive features -->
         <link rel="icon" href="assets/favicon.ico"> <!-- A custom icon will be used for this web application -->
         <link rel="stylesheet" type="text/css" href="/assets/style.css"> <!-- Custom-written CSS will be used, as it is easier to customise -->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
         <script src="http://maps.googleapis.com/maps/api/js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     </head>
     <body class="members">
     <div id="footerWrap">
