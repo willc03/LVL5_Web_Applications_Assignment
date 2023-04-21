@@ -325,19 +325,27 @@ a#btn_edit_booking:hover, button#btn_delete_booking:hover {
     background-color: var(--primary-white);
 }
 
-.info_container {
+.booking_details {
     width: 50%;
-    display: flex;
-    align-items: center;
-    align-content: space-between;
     color: var(--primary-white);
 }
-.info_container > * {
-    height: 100%;
+.booking_details h2 {
+    text-decoration: underline;
+}
+.info_container {
+    display: flex;
+    align-items: baseline;
+    align-content: space-between;
+    color: var(--primary-white);
 }
 .info_container .title {
     color: var(--primary-white);
     margin-right: 10px;
+}
+
+.info_container h3 {
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 #deletion_overlay {
@@ -385,4 +393,30 @@ a#btn_edit_booking:hover, button#btn_delete_booking:hover {
 #deletion_overlay #content #options input:hover, #deletion_overlay #content #options button:hover {
     background-color: var(--primary-white);
     color: var(--background-blue);
+}
+body.members button {
+    padding: 5px 10px;
+    border: 1px solid var(--primary-white);
+    border-radius: 5px;
+    color: var(--primary-white);
+    background-color: var(--background-blue);
+    transition-duration: 0.5s;
+}
+body.members button:hover {
+    cursor: pointer;
+    color: var(--background-blue);
+    background-color: var(--primary-white);
+}
+a.return {
+    border: 1px solid var(--primary-white);
+    border-radius: 5px;
+    text-decoration: none;
+    color: var(--primary-white);
+    padding: 10px;
+    margin-right: 50%;
+    transition-duration: 0.5s;
+}
+a.return:hover {
+    color: var(--background-blue);
+    background-color: var(--primary-white);
 }
