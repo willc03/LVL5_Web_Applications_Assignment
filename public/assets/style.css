@@ -407,7 +407,8 @@ body.members button:hover {
     color: var(--background-blue);
     background-color: var(--primary-white);
 }
-a.return {
+a.return, .booking_details input[type='submit'] {
+    background-color: var(--background-blue);
     border: 1px solid var(--primary-white);
     border-radius: 5px;
     text-decoration: none;
@@ -416,7 +417,11 @@ a.return {
     margin-right: 50%;
     transition-duration: 0.5s;
 }
-a.return:hover {
+a.return:hover, .booking_details input[type='submit']:hover {
     color: var(--background-blue);
     background-color: var(--primary-white);
+}
+.booking_details input[type='submit'] {
+    display: block;
+    margin: auto 0;
 }
