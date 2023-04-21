@@ -14,6 +14,7 @@
     <body>
         <div id="footerWrap">
             <div id="header">
+                <img src="<?php echo site_url('/assets/golf-ball.png'); ?>" style="height: 75px; width: 75px">
                 <a id="title" href="/">Furness Golf Club</a>
                 <nav id="navigation">
                     <ul>
