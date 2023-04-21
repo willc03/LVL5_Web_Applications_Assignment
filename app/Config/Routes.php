@@ -64,6 +64,10 @@ $routes->get('/golf/booking/create', 'golf::newBooking/GET'); // For creating a 
 $routes->post('/golf/booking/create', 'golf::newBooking/POST'); // POST: for adding new booking to the database
 $routes->post('/golf/booking/delete', 'golf::deleteBooking'); // POST: to delete bookings
 
+// API
+// Get
+$routes->get('/api/members/get', 'API::memberGet');
+
 // ADMINISTRATION
 // Admin home
 $routes->get('/admin', 'Admin::index');
