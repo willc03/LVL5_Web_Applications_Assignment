@@ -173,4 +173,45 @@ class GolfManagement extends Model
         return false;
     }
 
+    public function createBooking($date, $time, $players)
+    {
+        $db = db_connect();
+        $bookingBuilder = $db->table('GolfBooking');
+        $playerBuilder = $db->table('GolfBookingPlayers');
+
+        // Handle the booking data first
+        $query_time = date('H:i:s', strtotime(esc($time)));
+        $insert_successful = $bookingBuilder->insert([
+            'UserId' => session()->get('userId'),
+            'BookingDate' => $date,
+            'BookingTime' => $query_time
+        ]);
+
+        if (!$insert_successful) {
+            return false;
+        }
+
+        // Get the ID of the booking
+        $booking = $this->getBookingAtTime($date, $query_time);
+        if (count($booking) == 0) {
+            return false;
+        }
+
+        // Now add the players to the database
+        foreach ($players as $playerId) {
+            if ($playerId == '-1') {
+                continue;
+            }
+
+            if (!$playerBuilder->insert([
+                'BookingId' => $booking['id'],
+                'PlayerId' => $playerId
+            ])) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 }

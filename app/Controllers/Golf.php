@@ -47,7 +47,22 @@ class Golf extends BaseController
         }
         if ($requestType == "POST") // If the booking request is made
         {
-
+            $GolfManager = model('GolfManagement');
+            if (count($GolfManager->GetBookingAtTime($_POST['date'], $_POST['time'])) != 0)
+            {
+                return redirect()->to(site_url('/golf?error=invalid_override'));
+            } else {
+                $booking_successful = $GolfManager->CreateBooking($_POST['date'], $_POST['time'], [$_POST['plr_2_id'], $_POST['plr_3_id'], $_POST['plr_4_id']]);
+                $date = $_POST['date'];
+                if ($booking_successful)
+                {
+                    return redirect()->to(site_url("/golf?message=booking_successful&date=$date"));
+                }
+                else
+                {
+                    return redirect()->to(site_url("/golf?error=booking_unsuccessful&date=$date"));
+                }
+            }
         }
         else // If the page's HTML is being requested
         {

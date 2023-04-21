@@ -18,10 +18,20 @@
         <h2>Error: Couldn't delete booking</h2>
         <p>Only the creator of a booking can delete it.</p>
     </div>
+<?php } elseif (isset($_GET["error"]) && $_GET["error"] == "booking_unsuccessful") { ?>
+    <div class="message_box error">
+        <h2>Error: Booking unsuccessful</h2>
+        <p>An unspecified booking error has occurred. Please contact an administrator.</p>
+    </div>
 <?php } elseif (isset($_GET["message"]) && $_GET["message"] == "booking_deleted") { ?>
     <div class="message_box success">
         <h2>Booking Deleted</h2>
         <p>Your booking has been removed from the system.</p>
+    </div>
+<?php } elseif (isset($_GET["message"]) && $_GET["message"] == "booking_successful") { ?>
+    <div class="message_box success">
+        <h2>Booking Successful</h2>
+        <p>Your booking has been added to the time sheet.</p>
     </div>
 <?php } ?>
 
