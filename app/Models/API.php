@@ -15,7 +15,7 @@ class API extends Model
         $names = array();
         foreach ($results->getResultArray() as $res)
         {
-            $names[] = ( $res['Lastname'] . ', ' . $res['Firstname'] );
+            $names[] = array( 'value'=>$res['UserId'], 'label'=>$res['Lastname'] . ', ' . $res['Firstname'] );
         }
         return $names;
     }
