@@ -41,6 +41,10 @@ class Golf extends BaseController
      */
     public function newBooking($requestType)
     {
+        if (!session()->has('isLoggedIn'))
+        {
+            return redirect()->to(site_url('/home?error=not_logged_in'));
+        }
         if ($requestType == "POST") // If the booking request is made
         {
 
@@ -71,6 +75,10 @@ class Golf extends BaseController
 
     public function booking()
     {
+        if (!session()->has('isLoggedIn'))
+        {
+            return redirect()->to(site_url('/home?error=not_logged_in'));
+        }
         $data['title'] = 'Edit Booking';
         $data['nav_pages'] = $this->getNavigationBarPages();
         return view('templates/memberTemplates/header', $data)
