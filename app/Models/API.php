@@ -19,4 +19,9 @@ class API extends Model
         }
         return $names;
     }
+    public function GetBooking($date, $time)
+    {
+        $GolfManager = model("GolfManagement");
+        return $GolfManager->GetBookingAtTime($date, $time);
+    }
 }
