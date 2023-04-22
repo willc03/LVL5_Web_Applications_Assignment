@@ -34,11 +34,11 @@ class API extends Model
         {
             if (count($GolfMananger->GetBookingAtTime($date, $time)) == 0)
             {
-                $times[] = array($time, false);
+                $times[] = array($time, 0);
             }
             else
             {
-                $times[] = array($time, true);
+                $times[] = array($time, 1);
             }
         }
         return $times;
