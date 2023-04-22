@@ -24,4 +24,23 @@ class API extends Model
         $GolfManager = model("GolfManagement");
         return $GolfManager->GetBookingAtTime($date, $time);
     }
+    public function GetAvailableTimesForDate($date)
+    {
+        $GolfMananger = model("GolfManagement");
+        $timesForDate = $GolfMananger->GetTimesForDate($date);
+        // Check each time
+        $times = [];
+        foreach ($timesForDate as $time)
+        {
+            if (count($GolfMananger->GetBookingAtTime($date, $time)) == 0)
+            {
+                $times[] = array($time, false);
+            }
+            else
+            {
+                $times[] = array($time, true);
+            }
+        }
+        return $times;
+    }
 }
