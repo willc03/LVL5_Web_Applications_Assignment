@@ -11,7 +11,7 @@
 <?php } elseif (isset($_GET["error"]) && ($_GET["error"] == "booking_not_found" || $_GET["error"] == "unknown_deletion_error")) { ?>
     <div class="message_box error">
         <h2>Error: Booking not found</h2>
-        <p>The booking couldn't be deleted as it does not exist!</p>
+        <p>The action couldn't be completed as the booking couldn't be found in the system!</p>
     </div>
 <?php } elseif (isset($_GET["error"]) && $_GET["error"] == "invalid_selection") { ?>
     <div class="message_box error">
