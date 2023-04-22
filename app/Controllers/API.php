@@ -28,8 +28,12 @@ class API extends BaseController
         }
         //
         $APIModel = model("API");
-        $date = \DateTime::createFromFormat('d/m/Y', $_GET['date']);
-        $formatted_date = $date->format('Y-m-d');
+        $formatted_date = $_GET['date'];
+        if (!strpos($_GET['date'], '-'))
+        {
+            $date = \DateTime::createFromFormat('d/m/Y', $_GET['date']);
+            $formatted_date = $date->format('Y-m-d');
+        }
         return json_encode($APIModel->GetBooking($formatted_date, $_GET['time']));
     }
 
@@ -42,9 +46,14 @@ class API extends BaseController
             return json_encode(array('error'=>"Access Denied", 'message'=>'An account must be logged in to use this API.'));
         }
         //
+        $formatted_date = $_GET['date'];
+        if (!strpos($_GET['date'], '-'))
+        {
+            $date = \DateTime::createFromFormat('d/m/Y', $_GET['date']);
+            $formatted_date = $date->format('Y-m-d');
+        }
         $APIModel = model("API");
-        $date = \DateTime::createFromFormat('d/m/Y', $_GET['date']);
-        $formatted_date = $date->format('Y-m-d');
+        echo $formatted_date;
         return json_encode($APIModel->GetAvailableTimesForDate($formatted_date));
     }
 }
