@@ -29,7 +29,7 @@ These are, of course, just ideas, and the full explanation of the website and it
 ## Assignment Requirements
 | Requirement | Pass | 3rd | 2:2 | 2:1 | 1st | High 1st | Completed |
 |      --     |  --  | --  |  -- | --  |  -- |    --    |     --    |
-| Build an application which demonstrates FULL C.R.U.D. functionality built around your chosen scenario. (Create, Read, Update, and Delete) of records from at least ONE database table. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Build an application which demonstrates FULL C.R.U.D. functionality built around your chosen scenario. (Create, Read, Update, and Delete) of records from at least ONE database table. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓
 | A user registration system which adds new users to a database table. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓
 | Feature a login system verifying a user against data in a database table. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓
 | Maintain a state using sessions or alternative means. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓
@@ -49,7 +49,7 @@ These are, of course, just ideas, and the full explanation of the website and it
 | Multi-level user access will be achieved allowing at a minimum for a "normal" and "admin" user type to have different access rights over data within the application from the back-end database. |  |  |  | ✓ | ✓ | ✓ | ✓
 | The application incorporates some AJAX features such as a username availability checker. |  |  |  | ✓ | ✓ | ✓ | ✓
 | Responsive design allows for the application to transform allowing both desktop and mobile browsing with a modern user interface free from usability flaws. |  |  |  |  | ✓ | ✓ |
-| Multiple instances of AJAX techniques have been incorporated, or the application follows a backend API with separate front-end architecture. |  |  |  |  | ✓ | ✓ |
+| Multiple instances of AJAX techniques have been incorporated, or the application follows a backend API with separate front-end architecture. |  |  |  |  | ✓ | ✓ | ✓
 | Appropriate back-end privileges have been set up e.g. the application must NOT connect to the MySQL database using the root user with unlimited privilege. |  |  |  |  | ✓ | ✓ | ✓
 | A well considered user hierarchy has been incorporated into the application including the facility for administrators to manage other user accounts. |  |  |  |  |  | ✓ |
 | The application must have no major security flaws. Vulnerabilities ranging beyond just SQL injection have been addressed. |  |  |  |  |  | ✓ |
