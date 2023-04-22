@@ -214,4 +214,36 @@ class GolfManagement extends Model
         return true;
     }
 
+    public function EditBooking($details)
+    {
+        $db = db_connect();
+
+        // Update the booking first
+        $bookingBuilder = $db->table('GolfBooking');
+
+        var_dump($bookingBuilder->get());
+
+        $data = [];
+        if ($details['date'] != '')
+        {
+            if (!strpos($details['date'], '-'))
+            {
+                $details['date'] = \DateTime::createFromFormat('d/m/Y', $details['date']);
+                $details['date'] = $details['date']->format('Y-m-d');
+            }
+            $data['BookingDate'] = date('Y-m-d', strtotime($details['date']));
+        }
+        if ($details['time'] != '')
+        {
+            $data['BookingTime'] = date('H:i:s', strtotime($details['time']));
+        }
+
+        var_dump($data);
+        $bookingBuilder->update($data, 'BookingId = ' . $details['id']);
+
+        // Then handle the players
+        $playerBuilder = $db->table('GolfBookingPlayers');
+
+
+    }
 }

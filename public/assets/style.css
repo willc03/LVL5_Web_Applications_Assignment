@@ -425,3 +425,85 @@ a.return:hover, .booking_details input[type='submit']:hover {
     display: block;
     margin: auto 0;
 }
+
+.reason {
+    color: var(--primary-white);
+}
+.existing_details_title {
+    color: var(--primary-white);
+}
+.existing_details {
+    color: var(--primary-white);
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+}
+.existing_details > div {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 30%;
+}
+.existing_details > div > h4 {
+    font-weight: 1000;
+}
+
+.editing_area {
+    height: 150px;
+    width: 50%;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 15px;
+    box-sizing: border-box;
+    transition-duration: 0.5s;
+}
+.editing_area > div > * {
+    text-align: center;
+}
+.editing_area p {
+    color: var(--primary-white)
+}
+.editing_area h4 {
+    color: var(--primary-white);
+    font-weight: 1000;
+}
+.editing_area input {
+    background-color: var(--background-blue);
+    color: white;
+    border: 1px solid var(--primary-white);
+    border-radius: 5px;
+    font-size: medium;
+}
+
+#date_toggle, #time_toggle, #players_toggle {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+}
+#datebox {
+    width: 50%;
+    align-self: center;
+    text-align: center;
+}
+
+.booking_edit_submission {
+    display: flex;
+    width: 20%;
+    justify-content: space-around;
+}
+.booking_edit_submission a, .booking_edit_submission input {
+    background-color: var(--background-blue);
+    border: 1px solid var(--primary-white);
+    border-radius: 5px;
+    text-decoration: none;
+    color: var(--primary-white);
+    padding: 10px;
+    margin-right: 50%;
+    transition-duration: 0.5s;
+    height: 100%;
+    font-size: small;
+}
+.booking_edit_submission a:hover, .booking_edit_submission input:hover {
+    color: var(--background-blue);
+    background-color: var(--primary-white);
+}

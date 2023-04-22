@@ -88,16 +88,61 @@ class Golf extends BaseController
         }
     }
 
-    public function booking()
+    public function booking($bookingId, $editType)
     {
-        if (!session()->has('isLoggedIn'))
+        $data['id'] = $bookingId;
+        if ($editType == 'GET')
         {
-            return redirect()->to(site_url('/home?error=not_logged_in'));
+            $GolfManager = model("GolfManagement");
+            // Login security check
+            if (!session()->has('isLoggedIn'))
+            {
+                return redirect()->to(site_url('/home?error=not_logged_in'));
+            }
+            // Check the user has access to the page
+            $data['userOwnsBooking'] = false;
+            $data['userIsStaffMember'] = false;
+            $bookingInfo = $GolfManager->GetBookingFromId($bookingId);
+            if (count($bookingInfo) == 0)
+            {
+                return redirect()->to(site_url('/golf?error=booking_not_found'));
+            }
+            if ($bookingInfo['id'] == $bookingId)
+            {
+                $data['userOwnsBooking'] = true;
+            }
+            if (session()->get('privilegeLevel') >= 5)
+            {
+                $data['userIsStaffMember'] = true;
+            }
+
+            $data['bookingInfo'] = $bookingInfo;
+            $data['title'] = 'Edit Booking';
+            $data['nav_pages'] = $this->getNavigationBarPages();
+            $data['times_on_day'] = model("API")->GetAvailableTimesForDate($bookingInfo['date']);
+            return view('templates/memberTemplates/header', $data)
+                . view('pages/golf/booking_edit', $data)
+                . view('templates/memberTemplates/footer');
         }
-        $data['title'] = 'Edit Booking';
-        $data['nav_pages'] = $this->getNavigationBarPages();
-        return view('templates/memberTemplates/header', $data)
-             . view('templates/memberTemplates/footer');
+        elseif ($editType == 'POST')
+        {
+            if ($_POST['date'] == '' && $_POST['time'] == '' && $_POST['plr2'] == '' && $_POST['plr3'] == '' && $_POST['plr4'] == '')
+            {
+                return redirect()->to(site_url('/golf?error=no_changes'));
+            }
+            else
+            {
+                $details = [];
+                $details['id'] = $bookingId;
+                for ($i = 0; $i < count($_POST); $i++)
+                {
+                    $details[array_keys($_POST)[$i]] = $_POST[array_keys($_POST)[$i]];
+                }
+                var_dump($details);
+                echo '<br>';
+                model("GolfManagement")->EditBooking($details);
+            }
+        }
     }
 
     public function deleteBooking()
