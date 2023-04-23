@@ -494,7 +494,7 @@ a.return:hover, .booking_details input[type='submit']:hover {
     width: 20%;
     justify-content: space-around;
 }
-.booking_edit_submission a, .booking_edit_submission input {
+.booking_edit_submission a, .booking_edit_submission input, #plr_2_name, #plr_3_name, #plr_4_name {
     background-color: var(--background-blue);
     border: 1px solid var(--primary-white);
     border-radius: 5px;
@@ -506,7 +506,7 @@ a.return:hover, .booking_details input[type='submit']:hover {
     height: 100%;
     font-size: small;
 }
-.booking_edit_submission a:hover, .booking_edit_submission input:hover {
+.booking_edit_submission a:hover, .booking_edit_submission input:hover, #plr_2_name:hover, #plr_3_name:hover, #plr_4_name:hover {
     color: var(--background-blue);
     background-color: var(--primary-white);
 }

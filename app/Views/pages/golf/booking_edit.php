@@ -322,6 +322,7 @@
                         success: function (times) {
                             times = JSON.parse(times);
                             timeBoxObj.innerHTML = '';
+                            timeBoxObj.innerHTML += `<option selected disabled>Please select a time</option>`;
                             for (let i = 0; i < times.length; i++) {
                                 const optionObj = document.createElement('option');
                                 optionObj.value = times[i][0];
