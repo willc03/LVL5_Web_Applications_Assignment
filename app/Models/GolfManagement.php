@@ -216,34 +216,54 @@ class GolfManagement extends Model
 
     public function EditBooking($details)
     {
-        $db = db_connect();
+        try {
+            $db = db_connect();
 
-        // Update the booking first
-        $bookingBuilder = $db->table('GolfBooking');
+            // Update the booking first
+            $bookingBuilder = $db->table('GolfBooking');
 
-        var_dump($bookingBuilder->get());
-
-        $data = [];
-        if ($details['date'] != '')
-        {
-            if (!strpos($details['date'], '-'))
+            $data = [];
+            if ($details['date'] != '')
             {
-                $details['date'] = \DateTime::createFromFormat('d/m/Y', $details['date']);
-                $details['date'] = $details['date']->format('Y-m-d');
+                if (!strpos($details['date'], '-'))
+                {
+                    $details['date'] = \DateTime::createFromFormat('d/m/Y', $details['date']);
+                    $details['date'] = $details['date']->format('Y-m-d');
+                }
+                $data['BookingDate'] = date('Y-m-d', strtotime($details['date']));
             }
-            $data['BookingDate'] = date('Y-m-d', strtotime($details['date']));
+            if ($details['time'] != '')
+            {
+                $data['BookingTime'] = date('H:i:s', strtotime($details['time']));
+            }
+            $bookingBuilder->update($data, 'BookingId = ' . $details['id']);
+
+            // Then handle the players
+            $playerBuilder = $db->table('GolfBookingPlayers');
+
+            $bookingId = $details['id'];
+            $playerBuilder->delete("BookingId = $bookingId");
+
+            if ($details['plr2'] != 'null' && $details['plr2'] != 'rem')
+            {
+                $playerId = $details['plr2'];
+                $playerBuilder->insert(['BookingId' => $bookingId, 'PlayerId' => $playerId]);
+            }
+
+            if ($details['plr3'] != 'null' && $details['plr3'] != 'rem')
+            {
+                $playerId = $details['plr3'];
+                $playerBuilder->insert(['BookingId' => $bookingId, 'PlayerId' => $playerId]);
+            }
+
+            if ($details['plr4'] != 'null' && $details['plr4'] != 'rem')
+            {
+                $playerId = $details['plr4'];
+                $playerBuilder->insert(['BookingId' => $bookingId, 'PlayerId' => $playerId]);
+            }
+            return true;
+        } catch (Exception $e) {
+            return false;
         }
-        if ($details['time'] != '')
-        {
-            $data['BookingTime'] = date('H:i:s', strtotime($details['time']));
-        }
-
-        var_dump($data);
-        $bookingBuilder->update($data, 'BookingId = ' . $details['id']);
-
-        // Then handle the players
-        $playerBuilder = $db->table('GolfBookingPlayers');
-
-
     }
 }

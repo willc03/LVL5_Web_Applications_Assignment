@@ -23,6 +23,11 @@
         <h2>Error: Booking unsuccessful</h2>
         <p>An unspecified booking error has occurred. Please contact an administrator.</p>
     </div>
+<?php } elseif (isset($_GET["error"]) && $_GET["error"] == "edit_failed") { ?>
+    <div class="message_box error">
+        <h2>Error: Edit unsuccessful</h2>
+        <p>An unspecified editing error has occurred. Please contact an administrator.</p>
+    </div>
 <?php } elseif (isset($_GET["message"]) && $_GET["message"] == "booking_deleted") { ?>
     <div class="message_box success">
         <h2>Booking Deleted</h2>
@@ -32,6 +37,11 @@
     <div class="message_box success">
         <h2>Booking Successful</h2>
         <p>Your booking has been added to the time sheet.</p>
+    </div>
+<?php } elseif (isset($_GET["message"]) && $_GET["message"] == "edit_successful") { ?>
+    <div class="message_box success">
+        <h2>Booking Edit Successful</h2>
+        <p>Your booking edit was successful.</p>
     </div>
 <?php } ?>
 

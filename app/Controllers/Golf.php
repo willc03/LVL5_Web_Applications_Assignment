@@ -138,9 +138,11 @@ class Golf extends BaseController
                 {
                     $details[array_keys($_POST)[$i]] = $_POST[array_keys($_POST)[$i]];
                 }
-                var_dump($details);
-                echo '<br>';
-                model("GolfManagement")->EditBooking($details);
+                if (model("GolfManagement")->EditBooking($details)) {
+                    return redirect()->to(site_url('/golf?message=edit_successful'));
+                } else {
+                    return redirect()->to(site_url('/golf?error=edit_failed'));
+                }
             }
         }
     }
