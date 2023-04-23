@@ -1,3 +1,10 @@
+<style>
+    body {
+        background-image: url("/assets/golf-bg-1.png");
+        background-size: cover;
+    }
+</style>
+
 <?php
 // Section to make error boxes
 if (isset($_GET["error"]) && $_GET["error"] == "not_logged_in") {?>
@@ -11,4 +18,15 @@ if (isset($_GET["error"]) && $_GET["error"] == "not_logged_in") {?>
         <p>Your account doesn't have the correct access level for this service.0</p>
     </div>
 <?php } ?>
-<h2>home page</h2>
+<br>
+<h1>Furness Golf Club</h1>
+<div>
+    <br>
+    <h3>Welcome to Furness Golf Club</h3>
+    <p>The 3rd oldest links course in England, and the 6th oldest golf course in England.</p>
+</div>
+<br>
+<div>
+    <br>
+    <h3><a href="<?php echo site_url("/account/login"); ?>">Log in</a> to enjoy the full benefits of our website and course.</h3>
+</div>

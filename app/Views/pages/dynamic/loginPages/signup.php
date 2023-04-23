@@ -1,9 +1,13 @@
-<?php if (isset($_GET["error"]) && $_GET["error"] == "form_incomplete") {?>
-    <div class="message_box error">
-        <h2>Error: Form Incomplete</h2>
-        <p>Please fill in all fields on the form to sign up.</p>
-    </div>
-<?php } ?>
+<?php
+    if (isset($_GET["error"]) && $_GET["error"] == "form_incomplete") {
+        ?>
+        <div class="message_box error">
+            <h2>Error: Form Incomplete</h2>
+            <p>Please fill in all fields on the form to sign up.</p>
+        </div>
+        <?php
+    }
+?>
 
 <div id="signup_benefits">
     <h2>Log in to Furness Golf Club portal</h2>
@@ -14,7 +18,7 @@
         <li>Order drinks from the bar remotely.</li>
     </ul>
     <br>
-    <p><a href="<?php echo site_url('/account/create'); ?>">Sign up</a> to get all the benefits of a visitor or member.</p>
+    <p>Log in <a href="<?php echo site_url('/account/login'); ?>">here</a> if you already have an account.</p>
 </div>
 <br>
 
@@ -59,15 +63,14 @@
 ?>
 <script>
     // Set the validity for passwords
-    const passwordBox = document.getElementById(`signUpPassword`);
-    function onPasswordKeyUp()
-    {
-        if (passwordBox.value.length < 8)
-        {
-            return passwordBox.setCustomValidity("Passwords must contain at least 8 characters!");
+    const passwordBox = document.getElementById('signUpPassword');
+    function onPasswordKeyUp() {
+        if (passwordBox.value.length < 8) {
+            passwordBox.setCustomValidity('Passwords must contain at least 8 characters!');
+        } else {
+            passwordBox.setCustomValidity('');
         }
-        return passwordBox.setCustomValidity();
-    };
+    }
     onPasswordKeyUp();
 </script>
 <br>
