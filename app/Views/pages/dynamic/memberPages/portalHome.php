@@ -20,10 +20,10 @@
                 ?>
                 <tr>
                     <td><?php echo $time; ?></td>
-                    <td><?php echo $booking_details["players"][0] ?? "" ?></td>
-                    <td><?php echo $booking_details["players"][1] ?? "" ?></td>
-                    <td><?php echo $booking_details["players"][2] ?? "" ?></td>
-                    <td><?php echo $booking_details["players"][3] ?? "" ?></td>
+                    <td><?php echo $booking_details["players"][0][1] ?? "" ?></td>
+                    <td><?php echo $booking_details["players"][1][1] ?? "" ?></td>
+                    <td><?php echo $booking_details["players"][2][1] ?? "" ?></td>
+                    <td><?php echo $booking_details["players"][3][1] ?? "" ?></td>
                 </tr>
             <?php } ?>
         </table>
