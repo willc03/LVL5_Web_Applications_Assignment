@@ -11,7 +11,7 @@ class Admin extends BaseController
         {
             return redirect()->to(site_url('/home?error=not_logged_in'));
         }
-        elseif (session()->get('privilegeLevel') < 6)
+        elseif (session()->get('privilegeLevel') < 5)
         {
             return redirect()->to(site_url('/home?error=access_denied'));
         }
