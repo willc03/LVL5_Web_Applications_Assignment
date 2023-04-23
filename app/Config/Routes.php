@@ -75,6 +75,9 @@ $routes->get('/api/member/get/id/(:num)', 'API::memberIdGet/$1');
 // ADMINISTRATION
 // Admin home
 $routes->get('/admin', 'Admin::index');
+$routes->get('/admin/users', 'Admin::index/manage_user');
+$routes->get('/admin/golf', 'Admin::index/manage_golf');
+$routes->get('/admin/bar', 'Admin::private/manage_bar');
 
 /*
  * --------------------------------------------------------------------
