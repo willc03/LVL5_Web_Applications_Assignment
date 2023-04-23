@@ -485,6 +485,9 @@ a.return:hover, .booking_details input[type='submit']:hover {
     align-self: center;
     text-align: center;
 }
+.del_btn {
+    margin-left: 10px;
+}
 
 .booking_edit_submission {
     display: flex;
