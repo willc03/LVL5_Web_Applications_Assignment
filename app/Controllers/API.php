@@ -53,7 +53,19 @@ class API extends BaseController
             $formatted_date = $date->format('Y-m-d');
         }
         $APIModel = model("API");
-        echo $formatted_date;
         return json_encode($APIModel->GetAvailableTimesForDate($formatted_date));
+    }
+
+    public function memberIdGet($memberId)
+    {
+        $isLoggedIn = session()->get('isLoggedIn');
+        // Redirect the user if they are not logged in as a member or visitor
+        if (!$isLoggedIn)
+        {
+            return json_encode(array('error'=>"Access Denied", 'message'=>'An account must be logged in to use this API.'));
+        }
+        //
+        $APIModel = model("API");
+        return json_encode($APIModel->GetMemberById($memberId));
     }
 }

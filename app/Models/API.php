@@ -43,4 +43,17 @@ class API extends Model
         }
         return $times;
     }
+
+    public function GetMemberById($id)
+    {
+        $db = db_connect();
+        $builder = $db->table("Users");
+        $results = $builder->getWhere("UserId = $id");
+        // Return the relevant results to the player
+        $res = $results->getResultArray()[0];
+        $res['Password'] = "";
+        $res['Address'] = "";
+        $res['DateOfBirth'] = "";
+        return $res;
+    }
 }

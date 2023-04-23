@@ -70,6 +70,7 @@ $routes->post('/golf/booking/delete', 'golf::deleteBooking'); // POST: to delete
 $routes->get('/api/members/get', 'API::memberGet');
 $routes->get('/api/bookings/get', 'API::bookingGet');
 $routes->get('/api/bookings/times/getavailable', 'API::timeGet');
+$routes->get('/api/member/get/id/(:num)', 'API::memberIdGet/$1');
 
 // ADMINISTRATION
 // Admin home
