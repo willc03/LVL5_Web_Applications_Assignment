@@ -21,6 +21,7 @@ class Admin extends BaseController
         $data['nav_pages'] = $this->getNavigationBarPages();
         // View pages
         return view('templates/memberTemplates/header', $data)
+             . view('pages/admin/portal')
              . view('templates/memberTemplates/footer');
     }
 }

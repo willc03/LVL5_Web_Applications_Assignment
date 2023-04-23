@@ -510,3 +510,53 @@ a.return:hover, .booking_details input[type='submit']:hover {
     color: var(--background-blue);
     background-color: var(--primary-white);
 }
+
+/*
+ * Style all admin sections
+ */
+#blocks {
+    width: 100%;
+    display: flex;
+    flex-display: row;
+    justify-content: space-around;
+    color: var(--primary-white);
+}
+#blocks #block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30%;
+    border: 1px solid var(--primary-white);
+    border-radius: 5px;
+    padding-top: 10px;
+    box-sizing: border-box;
+    transition-duration: 0.5s;
+}
+#blocks #block:hover {
+    box-shadow: 0px 0px 15px 1px var(--primary-white);
+}
+#blocks #block h2, #blocks #block p {
+    text-align: center;
+}
+#blocks #block p {
+    margin-top: 5px;
+    padding: 5px 0px;
+}
+#blocks #block a {
+    width: 70%;
+    color: var(--primary-white);
+    margin: 10px auto;
+    box-sizing: border-box;
+    transition-duration: 0.5s;
+    text-align: center;
+}
+#blocks #block a:not(#no_btn) {
+    padding: 5px;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+#blocks #block a:not(#no_btn):hover {
+    color: var(--background-blue);
+    background-color: var(--primary-white);
+    cursor: pointer;
+}
