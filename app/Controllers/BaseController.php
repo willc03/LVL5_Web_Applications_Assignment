@@ -61,7 +61,6 @@ abstract class BaseController extends Controller
                 case 2:
                 case 3:
                 case 4:
-                case 5:
                     return array(
                         array('url' => site_url('/home'), 'btn_title' => "Home"),
                         array('url' => site_url('/about'), 'btn_title' => "About"),
@@ -70,6 +69,7 @@ abstract class BaseController extends Controller
                         array('url' => site_url('/members'), 'btn_title' => "Member<br>Portal"),
                         array('url' => site_url('/account/logout'), 'btn_title' => "Logout")
                     );
+                case 5:
                 case 6:
                     return array(
                         array('url' => site_url('/home'), 'btn_title' => "Home"),
