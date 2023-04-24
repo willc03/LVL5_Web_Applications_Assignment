@@ -57,4 +57,23 @@ class Admin extends BaseController
             return redirect()->to(site_url('/admin?error=usr_edit_error'));
         }
     }
+
+    public function removeTime()
+    {
+        if (model("API")->RemoveGolfTimeSet($_POST['timeid'])) {
+            return redirect()->to(site_url('/admin?message=time_removed'));
+        } else {
+            return redirect()->to(site_url('/admin?error=time_removed'));
+        }
+    }
+
+    public function addTime()
+    {
+        var_dump($_POST);
+        if (model("API")->AddGolfTimeSet($_POST)) {
+            return redirect()->to(site_url('/admin?message=time_added'));
+        } else {
+            return redirect()->to(site_url('/admin?error=time_added'));
+        }
+    }
 }

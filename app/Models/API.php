@@ -89,4 +89,24 @@ class API extends Model
         $worked = $builder->update($db_data, "UserId = $userId");
         return $worked;
     }
+
+    public function RemoveGolfTimeSet($data)
+    {
+        $db = db_connect('admin');
+        $builder = $db->table('GolfTimes');
+        $builder->delete("TimeId = $data");
+    }
+
+    public function AddGolfTimeSet($data)
+    {
+        $db = db_connect('admin');
+        $builder = $db->table('GolfTimes');
+        $builder->insert([
+            'StartDate' => date('Y-m-d', strtotime($data['startDate'])),
+            'EndDate' => date('Y-m-d', strtotime($data['endDate'])),
+            'StartTime' => model("GolfManagement")->GetAllTimes()[$data['stime']],
+            'EndTime' => model("GolfManagement")->GetAllTimes()[$data['etime']],
+            'TimeIncrement' => model("GolfManagement")->GetAllIncrements()[$data['timeinc']],
+        ]);
+    }
 }

@@ -78,6 +78,8 @@ $routes->get('/api/admin/advancedmemberget/(:num)', 'API::advancedMemberGet/$1')
 $routes->get('/admin', 'Admin::index');
 $routes->get('/admin/users', 'Admin::index/manage_user');
 $routes->get('/admin/golf', 'Admin::index/manage_golf');
+$routes->post('/admin/golf/removetimeset', 'Admin::removeTime');
+$routes->post('/admin/golf/addtimeset', 'Admin::addTime');
 $routes->get('/admin/bar', 'Admin::private/manage_bar');
 
 $routes->post('/admin/users', 'Admin::save_usr');
