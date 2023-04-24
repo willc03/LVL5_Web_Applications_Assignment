@@ -60,6 +60,8 @@
             $( function() {
                 $( "#datebox" ).datepicker({
                     dateFormat: "dd/mm/yy",
+                    minDate: '-4w',
+                    maxDate: '+4w',
                     defaultDate: "<?php echo date('d/m/Y', strtotime($bookingInfo['date'])); ?>"
                 });
             } );
