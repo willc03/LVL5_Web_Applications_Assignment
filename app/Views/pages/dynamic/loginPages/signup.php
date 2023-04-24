@@ -25,41 +25,42 @@
 <?php
     helper('form'); // This helper will allow CodeIgniter to help with the form-building process
 
-    echo form_open(site_url('/account/create/request'), ['id' => "signup_form", 'class' => "flex_container"]); // Open a POST form that redirects to /login/request for processing
+    echo form_open(site_url('/account/create/request'), ['id' => "signup_form", 'class' => "flex_container"]) // Open a POST form that redirects to /login/request for processing
+    . csrf_field()
     // First name:
-    echo form_label('First name:', 'fname', ['class' => 'required']);
-    echo form_input('fname', '', ['required'=>'']);
+    . form_label('First name:', 'fname', ['class' => 'required'])
+    . form_input('fname', '', ['required'=>''])
     // Last name:
-    echo form_label('Last name:', 'lname', ['class' => 'required']);
-    echo form_input('lname', '', ['required'=>'']);
+    . form_label('Last name:', 'lname', ['class' => 'required'])
+    . form_input('lname', '', ['required'=>''])
     // Date of birth:
-    echo form_label("Date of birth:", 'dob', ['class' => 'required']);
-    echo form_input('dob', '', ['required'=>''], 'date');
+    . form_label("Date of birth:", 'dob', ['class' => 'required'])
+    . form_input('dob', '', ['required'=>''], 'date')
     // Address line 1:
-    echo form_label('Address line 1:', 'ad1', ['class' => 'required']);
-    echo form_input('ad1', '', ['required'=>'']);
+    . form_label('Address line 1:', 'ad1', ['class' => 'required'])
+    . form_input('ad1', '', ['required'=>''])
     // Address line 2:
-    echo form_label('Address line 2:', 'ad2');
-    echo form_input('ad2');
+    . form_label('Address line 2:', 'ad2')
+    . form_input('ad2')
     // Town:
-    echo form_label('Town:', 'town', ['class' => 'required']);
-    echo form_input('town', '', ['required'=>'']);
+    . form_label('Town:', 'town', ['class' => 'required'])
+    . form_input('town', '', ['required'=>''])
     // County:
-    echo form_label('County:', 'county', ['class' => 'required']);
-    echo form_input('county', '', ['required'=>'']);
+    . form_label('County:', 'county', ['class' => 'required'])
+    . form_input('county', '', ['required'=>''])
     // Postcode:
-    echo form_label('Postcode:', 'pcode', ['class' => 'required']);
-    echo form_input('pcode', '', ['required'=>'']);
+    . form_label('Postcode:', 'pcode', ['class' => 'required'])
+    . form_input('pcode', '', ['required'=>''])
     // Email:
-    echo form_label('Email:', 'email', ['class' => 'required']);
-    echo form_input('email', '', ['onkeyup' => "onEmailKeyUp()", 'required'=>''], 'email');
+    . form_label('Email:', 'email', ['class' => 'required'])
+    . form_input('email', '', ['onkeyup' => "onEmailKeyUp()", 'required'=>''], 'email')
     // Password:
-    echo form_label('Password:', 'password', ['class'=>'required']);
-    echo form_password('password', '', ['id' => "signUpPassword", 'onkeyup' => "onPasswordKeyUp()", 'required'=>'']);
+    . form_label('Password:', 'password', ['class'=>'required'])
+    . form_password('password', '', ['id' => "signUpPassword", 'onkeyup' => "onPasswordKeyUp()", 'required'=>'']);
     // Submit: as the form is a POST requesting form, the route will need to be a POST route, not a GET route.
     ?><br><?php
-    echo form_submit('submit', 'Sign up');
-    echo form_close();
+    echo form_submit('submit', 'Sign up')
+    . form_close();
 ?>
 <script>
     // Set the validity for passwords

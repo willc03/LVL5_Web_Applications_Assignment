@@ -26,17 +26,18 @@
 <?php
     helper('form'); // This helper will allow CodeIgniter to help with the form-building process
 
-    echo form_open(site_url('/account/login/request'), ['id' => "login_form", 'class' => "flex_container"]); // Open a POST form that redirects to /login/request for processing
+    echo form_open(site_url('/account/login/request'), ['id' => "login_form", 'class' => "flex_container"]) // Open a POST form that redirects to /login/request for processing
+    . csrf_field()
     // Email:
-    echo form_label('Email:', 'email', ['class' => 'required']);
-    echo form_input('email', '', ['required'=>''], 'email');
+    . form_label('Email:', 'email', ['class' => 'required'])
+    . form_input('email', '', ['required'=>''], 'email')
     // Password:
-    echo form_label('Password:', 'password', ['class' => 'required']);
-    echo form_password('password', '', ['required'=>'']);
+    . form_label('Password:', 'password', ['class' => 'required'])
+    . form_password('password', '', ['required'=>'']);
     // Submit: as the form is a POST requesting form, the route will need to be a POST route, not a GET route.
     ?><br><?php
-    echo form_submit('submit', 'Log in');
-    echo form_close();
+    echo form_submit('submit', 'Log in')
+    . form_close();
 ?>
 <br>
 <div id="sign_up_container" class="flex_container">

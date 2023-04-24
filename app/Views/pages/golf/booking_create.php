@@ -126,6 +126,7 @@
     </div>
 
     <form method="post" action="<?php site_url('/golf/booking/create') ?>">
+        <?php echo csrf_field(); ?>
 
         <input type="hidden" name="date" value="<?php echo $_GET['date']; ?>">
         <input type="hidden" name="time" value="<?php echo $_GET['time']; ?>">

@@ -62,6 +62,7 @@ $date = $date > date('Y-m-d', strtotime(date('Y-m-d') . ' +4 weeks')) ? date('Y-
         <p><span style="color: red;">This action cannot be reversed.</span></p>
         <div id="options">
             <form method="post" action="<?php echo site_url('/golf/booking/delete'); ?>">
+                <?php echo csrf_field(); ?>
                 <input type="hidden" id="deleteId" name="deleteId">
                 <input type="submit" value="Yes">
             </form>

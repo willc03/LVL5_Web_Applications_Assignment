@@ -245,6 +245,7 @@
 <div class="booking_edit_submission">
     <a href="<?php echo site_url('/golf'); ?>">Cancel</a>
     <form method="post" action="<?php echo site_url("/golf/booking/$id"); ?>">
+        <?php echo csrf_field(); ?>
         <input type="hidden" name="date" id="newDate">
         <input type="hidden" name="time" id="newTime">
         <input type="hidden" name="plr2" id="newPlr2" value="<?php echo $bookingInfo['players'][1][0] ?? 'null' ?>">
