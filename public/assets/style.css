@@ -310,7 +310,7 @@ body.members table.teeSheet tr:first-child {
     color: var(--background-blue);
 }
 
-a#btn_edit_booking, button#btn_delete_booking {
+a#btn_edit_booking, button#btn_delete_booking, .button_row input[type='submit'] {
     background-color: var(--background-blue);
     color: var(--primary-white);
     font-size: xx-small;
@@ -320,9 +320,17 @@ a#btn_edit_booking, button#btn_delete_booking {
     padding: 3px 6px;
     transition-duration: 0.5s;
 }
-a#btn_edit_booking:hover, button#btn_delete_booking:hover {
+a#btn_edit_booking:hover, button#btn_delete_booking:hover, .button_row input[type='submit']:hover {
     color: var(--background-blue);
     background-color: var(--primary-white);
+}
+.button_row {
+    display: flex;
+    justify-content: space-evenly;
+    width: 25%;
+}
+.button_row input[type='submit'] {
+    font-size: small;
 }
 
 .booking_details {
@@ -467,7 +475,7 @@ a.return:hover, .booking_details input[type='submit']:hover {
     color: var(--primary-white);
     font-weight: 1000;
 }
-.editing_area input {
+.editing_area input, .form_content form input {
     background-color: var(--background-blue);
     color: white;
     border: 1px solid var(--primary-white);
@@ -480,7 +488,7 @@ a.return:hover, .booking_details input[type='submit']:hover {
     flex-direction: column;
     align-content: space-around;
 }
-#datebox {
+#datebox, .form_content form input {
     width: 50%;
     align-self: center;
     text-align: center;
@@ -564,7 +572,7 @@ a.return:hover, .booking_details input[type='submit']:hover {
 .manage_usr {
     color: var(--primary-white);
 }
-.manage_usr > div > form {
+.manage_usr > div > form, .form_content form {
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -579,7 +587,7 @@ a.return:hover, .booking_details input[type='submit']:hover {
     text-align: left;
     margin-top: 10px;
 }
-#username_input_el, .manage_usr > div > form input, .manage_usr > div > form select {
+#username_input_el, .manage_usr > div > form input, .manage_usr > div > form select, .form_content form, .form_content form input, .form_content form select {
     width: 100%;
     background: none;
     border: 1px solid var(--primary-white);
@@ -591,7 +599,7 @@ a.return:hover, .booking_details input[type='submit']:hover {
     color: var(--primary-white);
     transition-duration: 0.5s;
 }
-#username_input_el:hover, .manage_usr > div > form input:hover, .manage_usr > div > form select:hover {
+#username_input_el:hover, .manage_usr > div > form input:hover, .manage_usr > div > form select:hover,.form_content form input:hover, .form_content form select:hover {
     background-color: var(--primary-white);
     color: var(--background-blue);
 }
