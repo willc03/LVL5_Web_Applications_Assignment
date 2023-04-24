@@ -80,6 +80,8 @@ $routes->get('/admin/users', 'Admin::index/manage_user');
 $routes->get('/admin/golf', 'Admin::index/manage_golf');
 $routes->get('/admin/bar', 'Admin::private/manage_bar');
 
+$routes->post('/admin/users', 'Admin::save_usr');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

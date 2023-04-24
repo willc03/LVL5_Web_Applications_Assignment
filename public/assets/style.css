@@ -560,3 +560,38 @@ a.return:hover, .booking_details input[type='submit']:hover {
     background-color: var(--primary-white);
     cursor: pointer;
 }
+
+.manage_usr {
+    color: var(--primary-white);
+}
+.manage_usr > div > form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+.manage_usr > div > form > * {
+    margin: 0 auto;
+}
+.manage_usr > div > form > label {
+    width: 100%;
+    text-align: left;
+    margin-top: 10px;
+}
+#username_input_el, .manage_usr > div > form input, .manage_usr > div > form select {
+    width: 100%;
+    background: none;
+    border: 1px solid var(--primary-white);
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 5px;
+    text-align: center;
+    -webkit-appearance:none;
+    color: var(--primary-white);
+    transition-duration: 0.5s;
+}
+#username_input_el:hover, .manage_usr > div > form input:hover, .manage_usr > div > form select:hover {
+    background-color: var(--primary-white);
+    color: var(--background-blue);
+}
