@@ -35,11 +35,11 @@ These are, of course, just ideas, and the full explanation of the website and it
 | Maintain a state using sessions or alternative means. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓
 | Do not permit non logged-in users from accessing areas where C.R.U.D. operations (other than user registration) take place. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓
 | User's passwords MUST NOT be stored in plain text in the database and must be hashed using a secure algorithm (BCRYPT etc.) and NOT merely MD5 or SHA1. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓
-| All endpoints accessible within the application should render well-structured, valid HTML documents. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| All endpoints accessible within the application should render well-structured, valid HTML documents. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓
 | No stubs (incomplete pages) or invalid mark-up. | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 | An attempt has been made to style the user interface using CSS, either handwritten or using a framework. ***There may be some minor flaws and it may not work well on mobile.*** |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓
 | Some appropriate validation of user input on the front and/or backend to improve security and usability of the application. ***Examples such as password length validator, data types, email format etc.*** |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓
-| The application should contain no dead-ends, or security holes. ***An example such as a user logs in, and is sent to an empty page and must use the back button etc.*** |  | ✓ | ✓ | ✓ | ✓ | ✓ |
+| The application should contain no dead-ends, or security holes. ***An example such as a user logs in, and is sent to an empty page and must use the back button etc.*** |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓
 | Some front-end features have been implemented in JavaScript/jQuery which add to the usability and or security of the application in some way. ***For example, include real time edits to the on-screen content in response to user input e.g. adding and removing elements from a list.*** |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓
 | A backend web framework **may** have been used as opposed to standard PHP, but otherwise good code quality is evident throughout with no deprecated methods or procedural PHP methods. |  |  | ✓ | ✓ | ✓ | ✓ | ✓
 | Multi-level user access has been achieved allowing an admin user to access pages other cannot. |  |  | ✓ | ✓ | ✓ | ✓ | ✓
