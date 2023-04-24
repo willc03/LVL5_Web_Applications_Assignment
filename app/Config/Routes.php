@@ -71,6 +71,7 @@ $routes->get('/api/members/get', 'API::memberGet');
 $routes->get('/api/bookings/get', 'API::bookingGet');
 $routes->get('/api/bookings/times/getavailable', 'API::timeGet');
 $routes->get('/api/member/get/id/(:num)', 'API::memberIdGet/$1');
+$routes->get('/api/admin/advancedmemberget/(:num)', 'API::advancedMemberGet/$1');
 
 // ADMINISTRATION
 // Admin home

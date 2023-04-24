@@ -68,4 +68,20 @@ class API extends BaseController
         $APIModel = model("API");
         return json_encode($APIModel->GetMemberById($memberId));
     }
+
+    public function advancedMemberGet($userId)
+    {
+        $isLoggedIn = session()->get('isLoggedIn');
+        // Redirect the user if they are not logged in as a member or visitor
+        if (!$isLoggedIn)
+        {
+            return json_encode(array('error'=>"Access Denied", 'message'=>'An account must be logged in to use this API.'));
+        } elseif (session()->has('privilegeLevel') && session()->get('privilegeLevel') < 5)
+        {
+            return json_encode(array('error'=>"Access Denied", 'message'=>'This account doesn\'t have permission to use this API method'));
+        }
+        //
+        $APIModel = model("API");
+        return json_encode($APIModel->AdvancedMemberGet($userId));
+    }
 }

@@ -56,4 +56,15 @@ class API extends Model
         $res['DateOfBirth'] = "";
         return $res;
     }
+
+    public function AdvancedMemberGet($id)
+    {
+        $db = db_connect('admin'); // Admin privilege is used to get the sensitive information
+        $builder = $db->table("Users");
+        $results = $builder->getWhere("UserId = $id");
+        // Return the relevant results to the player
+        $res = $results->getResultArray()[0];
+        unset($res['Password']);
+        return $res;
+    }
 }
