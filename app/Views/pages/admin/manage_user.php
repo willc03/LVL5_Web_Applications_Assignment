@@ -71,7 +71,8 @@
         }
         $accountTypes['6'] = 'N/A';
         echo form_open(site_url('/admin/users'), ['id'=>'detailForm'])
-            . form_input(['type'=>'hidden','name'=>'uid','id'=>'uid', 'value'=>'null'])
+            . csrf_field()
+            . form_input('uid', '', ['id'=>'uid'], 'hidden')
             . form_label('First name: ', 'fname')
             . form_input('fname', '', ['required'=>'', 'id'=>'fname'])
             . form_label('Last name: ', 'lname')
