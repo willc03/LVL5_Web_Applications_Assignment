@@ -13,8 +13,7 @@
     <div class="initial_interaction" id="initial_interaction">
         <?php
         helper('form'); // Load the form helper
-        echo form_label('Name:', 'name')
-           . form_input('name', '', ['id'=>'username_input_el']);
+        echo form_label('Name:', 'name') . form_input('name', '', ['id'=>'username_input_el']);
         ?>
         <script>
             var availableTags = [];
@@ -44,8 +43,7 @@
                                     document.getElementById('town').value = addrItems[2];
                                     document.getElementById('county').value = addrItems[3];
                                     document.getElementById('pcode').value = addrItems[4];
-                                    let dateStr = response.DateOfBirth;
-                                    let parts = dateStr.split("-");
+                                    let parts = response.DateOfBirth.split("-");
                                     let formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
                                     document.getElementById('dob').value = formattedDate;
                                     const select = document.querySelector('#u_lvl');
@@ -61,15 +59,8 @@
     </div>
     <div class="main_interaction" id="main_interaction" style="display: none;">
         <?php
-        $accountTypes = ['1'=>'Visitor', '2'=>'Junior Member', '3'=>'Social Member', '4'=>'Full Member'];
-        if (session()->has('privilegeLevel') && session()->get('privilegeLevel') == 6)
-        {
-            $accountTypes['5'] = 'Staff';
-        } else
-        {
-            $accountTypes['5'] = 'N/A';
-        }
-        $accountTypes['6'] = 'N/A';
+        $accountTypes = ['1'=>'Visitor', '2'=>'Junior Member', '3'=>'Social Member', '4'=>'Full Member', '5'=>'', '6'=>'N/A'];
+        $accountTypes['5'] = (session()->has('privilegeLevel') && session()->get('privilegeLevel') == 6) ? 'Staff' : 'N/A';
         echo form_open(site_url('/admin/users'), ['id'=>'detailForm'])
             . csrf_field()
             . form_input('uid', '', ['id'=>'uid'], 'hidden')
@@ -96,20 +87,18 @@
             . form_close();
         ?>
         <script>
-                $( "#dob" ).datepicker({
-                    dateFormat: "dd/mm/yy"
-                });
+            $("#dob").datepicker({
+                dateFormat: "dd/mm/yy"
+            });
         </script>
         <div class="submitsection">
             <script>
-                function onCancel()
-                {
+                function onCancel() {
                     document.getElementById('username_input_el').value = '';
                     document.getElementById('initial_interaction').style.display = 'block';
                     document.getElementById('main_interaction').style.display = 'none';
                 }
-                function onSubmit()
-                {
+                function onSubmit() {
                     document.getElementById('detailForm').submit();
                 }
             </script>
