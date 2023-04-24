@@ -67,4 +67,26 @@ class API extends Model
         unset($res['Password']);
         return $res;
     }
+
+    public function UpdateUser($data)
+    {
+        $db = db_connect('admin'); // Admin privilege is used to SET the sensitive information
+        $builder = $db->table("Users");
+
+        $dateObj = \DateTime::createFromFormat('d/m/Y', $data['dob']);
+        $formattedDate = $dateObj->format('Y-m-d');
+
+        $db_data = [
+            'Firstname' => $data['fname'],
+            'Lastname' => $data['lname'],
+            'Address' => $data['ad1'] . ', ' . $data['ad2'] . ', ' . $data['town'] . ', ' . $data['county'] . ', ' . $data['pcode'],
+            'Email' => $data['email'],
+            'DateOfBirth' => $formattedDate,
+            'PrivilegeLevel' => $data['u_lvl']
+        ];
+
+        $userId = $data['uid'];
+        $worked = $builder->update($db_data, "UserId = $userId");
+        return $worked;
+    }
 }

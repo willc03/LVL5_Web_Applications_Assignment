@@ -46,4 +46,15 @@ class Admin extends BaseController
             . view('pages/admin/' . $page)
             . view('templates/memberTemplates/footer');
     }
+
+    public function save_usr()
+    {
+        $worked = model("API")->UpdateUser($_POST);
+        if ($worked)
+        {
+            return redirect()->to(site_url('/admin?message=usr_edit_success'));
+        } else {
+            return redirect()->to(site_url('/admin?error=usr_edit_error'));
+        }
+    }
 }

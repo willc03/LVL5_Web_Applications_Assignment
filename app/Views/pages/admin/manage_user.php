@@ -34,7 +34,7 @@
                                 method: 'GET',
                                 success: function(response) {
                                     response = JSON.parse(response);
-                                    console.log(response);
+                                    document.getElementById('uid').value = response.UserId;
                                     document.getElementById('fname').value = response.Firstname;
                                     document.getElementById('lname').value = response.Lastname;
                                     document.getElementById('email').value = response.Email;
@@ -44,9 +44,12 @@
                                     document.getElementById('town').value = addrItems[2];
                                     document.getElementById('county').value = addrItems[3];
                                     document.getElementById('pcode').value = addrItems[4];
-                                    //document.getElementById('u_lvl').
+                                    let dateStr = response.DateOfBirth;
+                                    let parts = dateStr.split("-");
+                                    let formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
+                                    document.getElementById('dob').value = formattedDate;
                                     const select = document.querySelector('#u_lvl');
-                                    select.value = response.PrivilegeLevel
+                                    select.value = response.PrivilegeLevel;
                                     document.getElementById('main_interaction').style.display = 'block';
                                 }
                             });
@@ -68,11 +71,13 @@
         }
         $accountTypes['6'] = 'N/A';
         echo form_open(site_url('/admin/users'), ['id'=>'detailForm'])
-            . form_hidden('uid', 'null')
+            . form_input(['type'=>'hidden','name'=>'uid','id'=>'uid', 'value'=>'null'])
             . form_label('First name: ', 'fname')
             . form_input('fname', '', ['required'=>'', 'id'=>'fname'])
             . form_label('Last name: ', 'lname')
-            . form_input('lname', '', ['required'=>'', 'id'=>'lname']) . '<br>'
+            . form_input('lname', '', ['required'=>'', 'id'=>'lname'])
+            . form_label('Date of birth: ', 'dob')
+            . form_input('dob', '', ['required'=>'', 'id'=>'dob']) . '<br>'
             . form_label('Address line 1:', 'ad1')
             . form_input('ad1', '', ['required'=>'', 'id'=>'ad1'])
             . form_label('Address line 2:', 'ad2')
@@ -89,6 +94,11 @@
             . form_dropdown('u_lvl', $accountTypes, '', ['required'=>'', 'id'=>'u_lvl'])
             . form_close();
         ?>
+        <script>
+                $( "#dob" ).datepicker({
+                    dateFormat: "dd/mm/yy"
+                });
+        </script>
         <div class="submitsection">
             <script>
                 function onCancel()
