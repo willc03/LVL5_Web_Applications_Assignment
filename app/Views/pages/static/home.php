@@ -15,7 +15,7 @@ if (isset($_GET["error"]) && $_GET["error"] == "not_logged_in") {?>
 <?php } elseif ( isset($_GET["error"]) && $_GET["error"] == "access_denied" ) { ?>
     <div class="message_box error">
         <h2>Access denied</h2>
-        <p>Your account doesn't have the correct access level for this service.0</p>
+        <p>Your account doesn't have the correct access level for this service.</p>
     </div>
 <?php } ?>
 <br>
