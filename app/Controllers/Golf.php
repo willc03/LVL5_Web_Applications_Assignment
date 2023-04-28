@@ -18,18 +18,12 @@ class Golf extends BaseController
         {
             return redirect()->to(site_url('/home?error=not_logged_in'));
         }
-        // Set whether to return the page for visitors golf or members golf
-        $page_to_view = 'visitors_golf';
-        if ( session()->get("privilegeLevel") >= 2 ) // Change the view to the member golf page if they are a member (2 or higher privilege)
-        {
-            $page_to_view = 'members_golf';
-        }
         // Get the navigation pages and page title
         $data['title'] = 'Golf';
         $data['nav_pages'] = $this->getNavigationBarPages();
         // View pages
         return view('templates/memberTemplates/header', $data)
-             . view('pages/golf/' . $page_to_view)
+             . view('pages/golf/members_golf')
              . view('templates/memberTemplates/footer');
     }
 
