@@ -72,25 +72,12 @@ the multi-level user access. These will ensure that different
 users have different permissions (such as not being able to)
 drop tables.
 */
-
 -- Base users, this is for very basic database interactions only. This user will not be permitted to delete data.
 CREATE USER IF NOT EXISTS 'G20973951_CO2717_user'@'localhost' IDENTIFIED BY 'db_usr_pwd_Pa55word';
 GRANT SELECT, INSERT ON G20973951_CO2717.Users TO 'G20973951_CO2717_user'@'localhost' WITH GRANT OPTION;
 GRANT SELECT ON G20973951_CO2717.GolfTimes TO 'G20973951_CO2717_user'@'localhost' WITH GRANT OPTION;
 GRANT SELECT, INSERT, DELETE, UPDATE ON G20973951_CO2717.GolfBooking TO 'G20973951_CO2717_user'@'localhost' WITH GRANT OPTION;
 GRANT SELECT, INSERT, DELETE, UPDATE ON G20973951_CO2717.GolfBookingPlayers TO 'G20973951_CO2717_user'@'localhost' WITH GRANT OPTION;
-
--- Junior golfers
-CREATE USER IF NOT EXISTS 'G20973951_CO2717_junior_member'@'localhost' IDENTIFIED BY 'db_usr_pwd_Pa55word';
-
--- Social members (non-playing)
-CREATE USER IF NOT EXISTS 'G20973951_CO2717_social_member'@'localhost' IDENTIFIED BY 'db_usr_pwd_Pa55word';
-
--- Full playing members
-CREATE USER IF NOT EXISTS 'G20973951_CO2717_full_member'@'localhost' IDENTIFIED BY 'db_usr_pwd_Pa55word';
-
--- Staff
-CREATE USER IF NOT EXISTS 'G20973951_CO2717_staff'@'localhost' IDENTIFIED BY 'db_usr_pwd_Pa55word';
 
 -- Admin
 CREATE USER IF NOT EXISTS 'G20973951_CO2717_admin'@'localhost' IDENTIFIED BY 'db_usr_pwd_Pa55word';

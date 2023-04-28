@@ -51,70 +51,10 @@ class Database extends Config
             'port'     => 3306,
         ];
 
-        public $junior_member = [
+        public $member = [
             'DSN'      => '',
             'hostname' => 'localhost',
-            'username' => 'G20973951_CO2717_junior_member',
-            'password' => 'db_usr_pwd_Pa55word',
-            'database' => 'G20973951_CO2717',
-            'DBDriver' => 'MySQLi',
-            'DBPrefix' => '',
-            'pConnect' => false,
-            'DBDebug'  => (ENVIRONMENT !== 'production'),
-            'charset'  => 'utf8',
-            'DBCollat' => 'utf8_general_ci',
-            'swapPre'  => '',
-            'encrypt'  => false,
-            'compress' => false,
-            'strictOn' => false,
-            'failover' => [],
-            'port'     => 3306,
-        ];
-
-        public $social_member = [
-            'DSN'      => '',
-            'hostname' => 'localhost',
-            'username' => 'G20973951_CO2717_social_member',
-            'password' => 'db_usr_pwd_Pa55word',
-            'database' => 'G20973951_CO2717',
-            'DBDriver' => 'MySQLi',
-            'DBPrefix' => '',
-            'pConnect' => false,
-            'DBDebug'  => (ENVIRONMENT !== 'production'),
-            'charset'  => 'utf8',
-            'DBCollat' => 'utf8_general_ci',
-            'swapPre'  => '',
-            'encrypt'  => false,
-            'compress' => false,
-            'strictOn' => false,
-            'failover' => [],
-            'port'     => 3306,
-        ];
-
-        public $full_member = [
-            'DSN'      => '',
-            'hostname' => 'localhost',
-            'username' => 'G20973951_CO2717_full_member',
-            'password' => 'db_usr_pwd_Pa55word',
-            'database' => 'G20973951_CO2717',
-            'DBDriver' => 'MySQLi',
-            'DBPrefix' => '',
-            'pConnect' => false,
-            'DBDebug'  => (ENVIRONMENT !== 'production'),
-            'charset'  => 'utf8',
-            'DBCollat' => 'utf8_general_ci',
-            'swapPre'  => '',
-            'encrypt'  => false,
-            'compress' => false,
-            'strictOn' => false,
-            'failover' => [],
-            'port'     => 3306,
-        ];
-
-        public $staff = [
-            'DSN'      => '',
-            'hostname' => 'localhost',
-            'username' => 'G20973951_CO2717_staff',
+            'username' => 'G20973951_CO2717_member',
             'password' => 'db_usr_pwd_Pa55word',
             'database' => 'G20973951_CO2717',
             'DBDriver' => 'MySQLi',
