@@ -305,7 +305,6 @@
                 method: 'GET',
                 success: function (response) {
                     response = JSON.parse(response);
-                    console.log(response);
                     npPlayersObj.innerHTML += `<p>${response.Lastname + ', ' + response.Firstname}</p>`;
                 }
             });
