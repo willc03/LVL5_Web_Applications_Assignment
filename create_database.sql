@@ -3,6 +3,10 @@ Written to create the database and all of the necessary tables
 and data that should be added.
 
 This script should be run by the root user of a database.
+
+
+NOTE: This file was made during development. For the full SQL
+tables in the submitted format, see the other SQL file.
 */
 CREATE DATABASE IF NOT EXISTS G20973951_CO2717;
 USE G20973951_CO2717;
@@ -51,6 +55,17 @@ CREATE TABLE IF NOT EXISTS BasketContents (
     PRIMARY KEY ( ProductId, UserId )
 );
 
+CREATE TABLE IF NOT EXISTS Orders (
+    UserId int NOT NULL REFERENCES Users(UserId),
+    OrderId int NOT NULL AUTO_INCREMENT PRIMARY KEY
+);
+CREATE TABLE IF NOT EXISTS OrderItems (
+    OrderId int NOT NULL REFERENCES Orders(OrderId),
+    ItemId int NOT NULL REFERENCES Products(ProductId),
+    Quantity INT NOT NULL,
+    PRIMARY KEY (OrderId, ItemId)
+);
+
 -- Golf-based tables
 CREATE TABLE IF NOT EXISTS GolfTimes ( -- This will set the times that golf can be booked (first row will be default)
     TimeId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -95,7 +110,9 @@ GRANT SELECT, INSERT, DELETE, UPDATE ON G20973951_CO2717.GolfBookingPlayers TO '
 -- Members will also be given access to settings on bar-related tables
 GRANT SELECT ON G20973951_CO2717.ProductCategories TO 'G20973951_CO2717_member'@'localhost' WITH GRANT OPTION;
 GRANT SELECT ON G20973951_CO2717.Products TO 'G20973951_CO2717_member'@'localhost' WITH GRANT OPTION;
-GRANT SELECT, INSERT, UPDATE ON G20973951_CO2717.BasketContents TO 'G20973951_CO2717_member'@'localhost' WITH GRANT OPTION;
+GRANT SELECT, INSERT, UPDATE, DELETE ON G20973951_CO2717.BasketContents TO 'G20973951_CO2717_member'@'localhost' WITH GRANT OPTION;
+GRANT SELECT, INSERT ON G20973951_CO2717.Orders TO 'G20973951_CO2717_member'@'localhost' WITH GRANT OPTION;
+GRANT INSERT ON G20973951_CO2717.OrderItems TO 'G20973951_CO2717_member'@'localhost' WITH GRANT OPTION;
 -- Admin
 -- Staff will also use this level of administration as redirect settings will prevent them from abusing this
 -- level of privilege.

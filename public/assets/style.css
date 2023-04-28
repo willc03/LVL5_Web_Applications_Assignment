@@ -603,3 +603,131 @@ a.return:hover, .booking_details input[type='submit']:hover {
     background-color: var(--primary-white);
     color: var(--background-blue);
 }
+
+.introduction {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin-bottom: 15px;
+}
+.introduction h1 {
+    font-weight: 1000;
+    align-self: center;
+}
+.category_nav {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+.product_view {
+    margin-top: 25px;
+    width: 70%;
+}
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.product {
+    width: 30%;
+    height: calc(250px + 30px + 30px + 15px);
+    border: 1px solid var(--primary-white);
+    border-radius: 5px;
+    margin-bottom: 25px;
+    padding: 15px;
+    box-sizing: border-box;
+    color: var(--primary-white);
+}
+.add_to_basket {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+.add_to_basket button {
+    margin-top: 15px;
+    height: 30px;
+}
+a.stripped {
+    text-decoration: none!important;
+    width: 10%;
+    border: 1px solid var(--primary-white);
+    border-radius: 5px;
+    color: var(--primary-white)!important;
+    font-size: small;
+    text-align: center;
+    vertical-align: middle!important;
+    transition-duration: 0.5s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 2% 0;
+    box-sizing: border-box;
+}
+.stripped:hover {
+    color: var(--background-blue)!important;
+    background-color: var(--primary-white)!important;
+}
+/*
+ * https://vidler.app/blog/website-design/how-to-create-a-responsive-square-image-with-css/
+ */
+.square {
+    position: relative;
+}
+.square::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+.square img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+.flexrow {
+    display: flex!important;
+    flex-direction: row!important;
+    width: 100%!important;
+    height: 125px!important;
+}
+.flexcol {
+    width: 25%;
+    color: var(--primary-white);
+    align-self: center;
+}
+.remove_from_basket {
+    width: 25%;
+    display: flex;
+    justify-content: space-around;
+}
+.remove_from_basket button {
+    height: 25%;
+    align-self: center;
+}
+.item_title {
+    font-weight: 1000;
+}
+
+.basketitems {
+    display: flex;
+    justify-content: space-evenly;
+}
+.settlement {
+    width: 70%;
+    border: 1px solid var(--primary-white);
+    border-radius: 5px;
+    padding: 15px;
+    box-sizing: border-box;
+    color: var(--primary-white);
+    display: flex;
+    justify-content: space-around;
+}
+.settlement p {
+    width: 60%;
+    align-self: center;
+}

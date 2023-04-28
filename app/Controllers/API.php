@@ -84,4 +84,50 @@ class API extends BaseController
         $APIModel = model("API");
         return json_encode($APIModel->AdvancedMemberGet($userId));
     }
+
+    public function basket()
+    {
+        if ($_POST['operation'] == 'ADD')
+        {
+            $APIModel = model("API");
+            return json_encode(array('newQuantity' => $APIModel->AddToBasket($_POST['productId'])));
+        }
+    }
+
+    public function clearBasket()
+    {
+        try
+        {
+            model("API")->ClearUserBasket(session()->get('userId'));
+            return json_encode(array('success'=>true));
+        }
+        catch (Exception $e)
+        {
+            return json_encode(array('success'=>false));
+        }
+    }
+
+    public function removeBasketItem()
+    {
+        try
+        {
+            $result = model("API")->RemoveFromBasket($_POST['productId'], $_POST['quantity']);
+            return json_encode(array('success'=>true, 'message'=>$result));
+        }
+        catch (Exception $e)
+        {
+            return json_encode(array('success'=>false, 'message'=>'Unknown Error'));
+        }
+    }
+
+    public function placeOrder()
+    {
+        try {
+            model("API")->TransferToOrder();
+            return json_encode(array('success'=>true));
+        } catch(Exception $e)
+        {
+            return json_encode(array('success'=>false));
+        }
+    }
 }

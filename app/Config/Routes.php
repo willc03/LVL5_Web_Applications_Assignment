@@ -54,7 +54,7 @@ $routes->get('/account/logout', 'Login::logout');
 $routes->get('/members', 'Members::index');
 // Bar
 $routes->get('/members/bar', 'Bar::index');
-
+$routes->get('/members/bar/basket', 'Bar::basket');
 // GOLF
 // golf
 $routes->get('/golf', 'golf::index');
@@ -72,6 +72,11 @@ $routes->get('/api/bookings/get', 'API::bookingGet');
 $routes->get('/api/bookings/times/getavailable', 'API::timeGet');
 $routes->get('/api/member/get/id/(:num)', 'API::memberIdGet/$1');
 $routes->get('/api/admin/advancedmemberget/(:num)', 'API::advancedMemberGet/$1');
+$routes->post('/api/bar/basket', 'API::basket');
+
+$routes->post('/api/bar/basket/clear', 'API::clearBasket');
+$routes->post('/api/bar/basket/removeQuant/', 'API::removeBasketItem');
+$routes->post('/api/bar/order', 'API::placeOrder');
 
 // ADMINISTRATION
 // Admin home

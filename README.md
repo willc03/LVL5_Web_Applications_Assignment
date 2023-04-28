@@ -52,10 +52,5 @@ These are, of course, just ideas, and the full explanation of the website and it
 | Multiple instances of AJAX techniques have been incorporated, or the application follows a backend API with separate front-end architecture. |  |  |  |  | ✓ | ✓ | ✓
 | Appropriate back-end privileges have been set up e.g. the application must NOT connect to the MySQL database using the root user with unlimited privilege. |  |  |  |  | ✓ | ✓ | ✓
 | A well considered user hierarchy has been incorporated into the application including the facility for administrators to manage other user accounts. |  |  |  |  |  | ✓ | ✓
-| The application must have no major security flaws. Vulnerabilities ranging beyond just SQL injection have been addressed. |  |  |  |  |  | ✓ |
-| You have undertaken significant independent learning and used tools, and or techniques beyond what was given to you throughout the labs and lectures this year. |  |  |  |  |  | ✓ |
- 
-## Assessment Response: Explanations & Justifications
-This section will be completed as decisions are made throughout development.
- 
-## References & Bibliography
+| The application must have no major security flaws. Vulnerabilities ranging beyond just SQL injection have been addressed. |  |  |  |  |  | ✓ | ✓
+| You have undertaken significant independent learning and used tools, and or techniques beyond what was given to you throughout the labs and lectures this year. |  |  |  |  |  | ✓ | ✓
