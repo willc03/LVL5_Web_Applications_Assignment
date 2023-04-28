@@ -1,7 +1,12 @@
 <h1>Members Portal</h1>
 
-<div id="tee_sheet_overview">
-    <h2>Tee Sheet Overview</h2>
+<div class="q" style="display: flex; width: 50%; justify-content: space-around">
+    <a class="stripped" href="<?php echo site_url("/members/bar/"); ?>" style="padding: 10px;">Go to bar</a>
+    <a class="stripped" href="<?php echo site_url("/golf/"); ?>" style="padding: 10px;">Book golf</a>
+</div>
+
+<div id="tee_sheet_overview" style="margin-top: 25px">
+    <h2 style="margin-bottom: 5px;">Tee Sheet Overview</h2>
     <div id="teeSheetBox" class="overview">
         <table class="teeSheet">
             <tr>
