@@ -44,6 +44,13 @@ CREATE TABLE IF NOT EXISTS Products ( -- Products table will be used for the vir
     Price float NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS BasketContents (
+    ProductId int NOT NULL REFERENCES Products(ProductId),
+    UserId int NOT NULL REFERENCES Users(UserId),
+    Quantity int NOT NULL,
+    PRIMARY KEY ( ProductId, UserId )
+);
+
 -- Golf-based tables
 CREATE TABLE IF NOT EXISTS GolfTimes ( -- This will set the times that golf can be booked (first row will be default)
     TimeId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -79,6 +86,18 @@ GRANT SELECT ON G20973951_CO2717.GolfTimes TO 'G20973951_CO2717_user'@'localhost
 GRANT SELECT, INSERT, DELETE, UPDATE ON G20973951_CO2717.GolfBooking TO 'G20973951_CO2717_user'@'localhost' WITH GRANT OPTION;
 GRANT SELECT, INSERT, DELETE, UPDATE ON G20973951_CO2717.GolfBookingPlayers TO 'G20973951_CO2717_user'@'localhost' WITH GRANT OPTION;
 
+-- Members
+CREATE USER IF NOT EXISTS 'G20973951_CO2717_member'@'localhost' IDENTIFIED BY 'db_usr_pwd_Pa55word';
+GRANT SELECT, INSERT ON G20973951_CO2717.Users TO 'G20973951_CO2717_member'@'localhost' WITH GRANT OPTION;
+GRANT SELECT ON G20973951_CO2717.GolfTimes TO 'G20973951_CO2717_member'@'localhost' WITH GRANT OPTION;
+GRANT SELECT, INSERT, DELETE, UPDATE ON G20973951_CO2717.GolfBooking TO 'G20973951_CO2717_member'@'localhost' WITH GRANT OPTION;
+GRANT SELECT, INSERT, DELETE, UPDATE ON G20973951_CO2717.GolfBookingPlayers TO 'G20973951_CO2717_member'@'localhost' WITH GRANT OPTION;
+-- Members will also be given access to settings on bar-related tables
+GRANT SELECT ON G20973951_CO2717.ProductCategories TO 'G20973951_CO2717_member'@'localhost' WITH GRANT OPTION;
+GRANT SELECT ON G20973951_CO2717.Products TO 'G20973951_CO2717_member'@'localhost' WITH GRANT OPTION;
+GRANT SELECT, INSERT, UPDATE ON G20973951_CO2717.BasketContents TO 'G20973951_CO2717_member'@'localhost' WITH GRANT OPTION;
 -- Admin
+-- Staff will also use this level of administration as redirect settings will prevent them from abusing this
+-- level of privilege.
 CREATE USER IF NOT EXISTS 'G20973951_CO2717_admin'@'localhost' IDENTIFIED BY 'db_usr_pwd_Pa55word';
 GRANT ALL PRIVILEGES ON G20973951_CO2717.* TO 'G20973951_CO2717_admin'@'localhost' WITH GRANT OPTION;
